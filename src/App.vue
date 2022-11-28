@@ -1,8 +1,4 @@
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav> -->
   <navigation-bar />
   <router-view/>
 </template>
@@ -17,5 +13,7 @@
 </script>
 
 <style lang="scss">
-
+  section:nth-child(odd) {
+    background-color: #f8f9fa;
+  }
 </style>
