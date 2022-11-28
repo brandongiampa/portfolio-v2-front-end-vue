@@ -15,12 +15,21 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 position-relative bg-black-opaque d-none d-md-flex justify-content-center align-items-center">
-                    
+                    <testimonial-carousel />
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+    import TestimonialCarousel from './TestimonialCarousel.vue'
+    export default {
+        components: {
+            TestimonialCarousel
+        }
+    }
+</script>
 
 <style lang="scss">
     #hero-image {
