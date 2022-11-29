@@ -70,7 +70,7 @@ const portfolioWorksModule = {
         }
     },
     actions: {
-        setAboutText({commit}, works) {
+        setWorks({commit}, works) {
             commit('setWorks', works)
         }
     }
