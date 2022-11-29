@@ -40,6 +40,7 @@
                     </div>
                 </div>
             </div>
+            <a class="btn btn-primary rounded-0 text-white mt-5" href="./portfolio">View All Works</a>  
         </div>
     </section>
 </template>
