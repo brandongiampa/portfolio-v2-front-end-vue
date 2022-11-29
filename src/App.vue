@@ -13,7 +13,7 @@
 </script>
 
 <style lang="scss">
-  section:nth-child(odd) {
+  section:nth-child(even) {
     background-color: #f8f9fa;
   }
 </style>
