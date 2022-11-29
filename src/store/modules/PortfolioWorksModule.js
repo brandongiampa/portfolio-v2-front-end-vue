@@ -60,26 +60,18 @@ const portfolioWorksModule = {
         ]
     },
     getters: {
-        aboutText(state) {
-            return state.aboutText
-        },
-        aboutTextExcerpt(state) {
-            const text = state.aboutText
-            if (!text || text === '') return ''
-            const textSplit = text.split(/<\/?p>/).filter((text)=> {return text !== '' })
-            const firstParagraph = textSplit[0]
-            const reconstructedParagraph = firstParagraph.split(' ').filter((word, index) => { return index < 50 }).join(' ')
-            return `${reconstructedParagraph}...`
+        works(state) {
+            return state.works
         }
     },
     mutations: {
-        setAboutText(state, aboutText) {
-            state.aboutText = aboutText
+        setWorks(state, works) {
+            state.works = works
         }
     },
     actions: {
-        setAboutText({commit}, aboutText) {
-            commit('setAboutText', aboutText)
+        setAboutText({commit}, works) {
+            commit('setWorks', works)
         }
     }
 }
