@@ -30,26 +30,8 @@
                         <span class="h5"><a href="mailto:me@brandongiampa.com"><i class="fas fa-envelope mr-2"></i> me@brandongiampa.com</a></span>
                     </div>
                     <div class="row mt-5 text-muted pl-md-2" id="hashtags">
-                        <div class="col-4 py-3 hashtag">
-                            <i>#webdeveloper</i>
-                        </div>
-                        <div class="col-4 py-3 hashtag">
-                            <i>#frontend</i>
-                        </div>
-                        <div class="col-4 py-3 hashtag">
-                            <i>#fullstack</i>
-                        </div>
-                        <div class="col-4 py-3 hashtag">
-                            <i>#webmaster</i>
-                        </div>
-                        <div class="col-4 py-3 hashtag">
-                            <i>#losangeles</i>
-                        </div>
-                        <div class="col-4 py-3 hashtag">
-                            <i>#orangecounty</i>
-                        </div>
-                        <div class="col-4 py-3 hashtag">
-                            <i>#remote</i>
+                        <div v-for="(hashtag, index) of hashtags" class="col-4 py-3 hashtag" :key="`footer-hashtag-${index}`">
+                            <i>#{{hashtag}}</i>
                         </div>
                     </div>
                 </div>
@@ -60,3 +42,26 @@
         </div>
     </footer>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                hashtags: [
+                    'webdeveloper',
+                    'softwareengineer',
+                    'frontend',
+                    'fullstack',
+                    'algorithms',
+                    'datastructures',
+                    'losangeles',
+                    'orangecounty',
+                    'detroit',
+                    'motorcity',
+                    'remote',
+                    'willingtorelocate'
+                ]
+            }
+        }
+    }
+</script>
