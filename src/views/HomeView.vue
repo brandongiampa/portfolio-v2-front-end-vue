@@ -4,6 +4,7 @@
     <about-section></about-section>
     <works-section></works-section>
     <technologies-section></technologies-section>
+    <testimonials-section></testimonials-section>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import HeroShowcase from '@/components/HeroShowcase.vue'
 import AboutSection from '@/components/homepagesections/AboutSection.vue'
 import WorksSection from '@/components/homepagesections/WorksSection.vue'
 import TechnologiesSection from '@/components/homepagesections/TechnologiesSection.vue'
+import TestimonialsSection from '@/components/homepagesections/TestimonialsSection.vue'
 
 export default {
   name: 'HomeView',
@@ -19,7 +21,8 @@ export default {
     HeroShowcase,
     AboutSection,
     WorksSection,
-    TechnologiesSection
+    TechnologiesSection,
+    TestimonialsSection
   }
 }
 </script>
