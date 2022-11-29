@@ -1,13 +1,16 @@
 <template>
   <navigation-bar />
   <router-view/>
+  <site-footer></site-footer>
 </template>
 
 <script>
   import NavigationBar from './components/NavigationBar.vue'
+  import SiteFooter from './components/SiteFooter.vue'
   export default {
     components: {
-      NavigationBar
+      NavigationBar,
+      SiteFooter
     }
   }
 </script>
