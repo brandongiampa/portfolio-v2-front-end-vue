@@ -125,6 +125,8 @@ p {
 .font-family-serif {
     font-family: $font-family-serif;
 }
-
+button.btn-primary {
+    color: $white !important;
+}
 
 @import "bootstrap";
