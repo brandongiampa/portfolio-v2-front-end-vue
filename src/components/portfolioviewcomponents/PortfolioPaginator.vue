@@ -92,5 +92,8 @@ export default {
         &:hover {
             cursor: pointer;
         }
+        &.inactive:hover {
+            cursor: default;
+        }
     }
 </style>
