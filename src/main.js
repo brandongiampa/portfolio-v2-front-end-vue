@@ -14,13 +14,18 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import WorkCard from './components/WorkCard.vue'
 
 /* add icons to the library */
 library.add(faGithub)
 library.add(faLinkedin)
 library.add(faCircleInfo)
 library.add(faEye)
+library.add(faChevronLeft)
+library.add(faChevronRight)
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')
+createApp(App).component('work-card', WorkCard).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')
 
 import "bootstrap/dist/js/bootstrap.js"
