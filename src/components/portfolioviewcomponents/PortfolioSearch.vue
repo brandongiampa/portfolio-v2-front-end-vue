@@ -20,11 +20,12 @@
                     type="search" 
                     id="website-title" 
                     name="title" 
+                    @keypress="checkIfEnter"
                 >
             </div>
             <div class="col-12 col-md-4">
                 <label class="" for="website-feature">Feature</label>
-                <select v-model="selectedFeature" class="form-control" name="features" id="website-feature">
+                <select @keypress="checkIfEnter" v-model="selectedFeature" class="form-control" name="features" id="website-feature">
                     <option value="" key="features-option-default">--ANY--</option>
                     <option 
                         v-for="(feature, index) of features"
@@ -36,7 +37,7 @@
             </div>
             <div class="col-12 col-md-4">
                 <label for="website-technology">Technology</label>
-                <select v-model="selectedTechnology" class="form-control" name="tech" id="website-technology">
+                <select @keypress="checkIfEnter" v-model="selectedTechnology" class="form-control" name="tech" id="website-technology">
                     <option value="" key="technologies-option-default">--ANY--</option>
                     <option 
                         v-for="(technology, index) of technologies"
@@ -84,6 +85,9 @@ export default {
                     technology: this.selectedTechnology
                 }
             )
+        },
+        checkIfEnter(e) {
+            if (e.key === 'Enter') this.submitSearch()
         }
     },
     mounted() {
