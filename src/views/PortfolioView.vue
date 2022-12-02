@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <portfolio-paginator :number-of-pages="numberOfPages" @set-current-index="setCurrentIndex" />
+        <portfolio-paginator :current-index="currentIndex" :number-of-pages="numberOfPages" @set-current-index="setCurrentIndex" />
     </div>
 </template>
 
@@ -25,28 +25,31 @@
             offset() {
                 return (this.currentIndex * WORKS_PER_PAGE) - WORKS_PER_PAGE
             },
-            numberOfPages() {
-                return Math.ceil(this.$store.getters.works.length / WORKS_PER_PAGE)
-            },
-            worksToShow() {
+            refinedWorksList() {
                 let refinedWorksList = this.worksFullList
                 if (this.title && this.title !== '') {
                     refinedWorksList = refinedWorksList.filter((work) => {
-                        return work.title.includes(this.title)
+                        return work.title.toLowerCase().includes(this.title.toLowerCase())
                     })
                 }
                 if (this.feature && this.feature !== '') {
                     refinedWorksList = refinedWorksList.filter((work) => {
-                        return work.features.includes(this.feature)
+                        return work.features.toLowerCase().includes(this.feature.toLowerCase())
                     })
                 }
                 if (this.technology && this.technology !== '') {
                     refinedWorksList = refinedWorksList.filter((work) => {
-                        return work.technologies.includes(this.technology)
+                        return work.technologies.toLowerCase().includes(this.technology.toLowerCase())
                     })
                 }
-                return refinedWorksList.slice(this.offset, this.offset + WORKS_PER_PAGE)
-            }
+                return refinedWorksList
+            },
+            worksToShow() {
+                return this.refinedWorksList.slice(this.offset, this.offset + WORKS_PER_PAGE)
+            },
+            numberOfPages() {
+                return Math.ceil(this.refinedWorksList.length / WORKS_PER_PAGE)
+            },
         },
         methods: {
             setCurrentIndex: function(index) {
@@ -56,6 +59,7 @@
                 this.title = searchCriteriaObj.title
                 this.feature = searchCriteriaObj.feature
                 this.technology = searchCriteriaObj.technology
+                this.setCurrentIndex(1)
             }
         },
         data() {

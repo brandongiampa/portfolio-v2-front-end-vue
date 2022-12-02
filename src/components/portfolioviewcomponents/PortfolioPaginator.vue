@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex align-items-center justify-content-center py-4">
+    <div v-if="numberOfPages>1" class="d-flex align-items-center justify-content-center py-4">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
@@ -54,15 +54,9 @@ export default {
             return this.currentIndex + 1
         }
     },
-    data() {
-        return {
-            currentIndex: 1
-        }
-    },
     methods: {
         setCurrentIndex: function(index) {
-            this.currentIndex = index
-            this.$emit('setCurrentIndex', this.currentIndex)
+            this.$emit('setCurrentIndex', index)
         },
         incrementCurrentIndex: function() {
             this.setCurrentIndex(Math.min(this.currentIndex+1, this.numberOfPages))
@@ -75,7 +69,11 @@ export default {
         numberOfPages: {
             type: Number,
             required: true
-        }
+        },
+         currentIndex: {
+            type: Number,
+            required: true
+         }
     },
     emits: ['setCurrentIndex']
 }
