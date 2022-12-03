@@ -13,7 +13,7 @@
             {{searchMenuText}}
         </button>
     </div>
-    <div class="collapse" id="searchCollapse">
+    <div class="collapse p-3" id="searchCollapse" style="background-color: #f8f9fa;">
         <div class="row align-items-center py-4">
             <div class="col-12 col-md-4">
                 <label for="website-title">Title</label>
@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <hr/>
+    
 </template>
 
 <script>
