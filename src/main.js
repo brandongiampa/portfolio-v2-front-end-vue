@@ -19,6 +19,8 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { faSearchPlus } from '@fortawesome/free-solid-svg-icons'
 import { faSearchMinus } from '@fortawesome/free-solid-svg-icons'
 import WorkCard from './components/WorkCard.vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 /* add icons to the library */
 library.add(faGithub)
@@ -30,6 +32,6 @@ library.add(faChevronRight)
 library.add(faSearchPlus)
 library.add(faSearchMinus)
 
-createApp(App).component('work-card', WorkCard).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')
+createApp(App).component('work-card', WorkCard).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).use(VueAxios, axios).mount('#app')
 
 import "bootstrap/dist/js/bootstrap.js"
