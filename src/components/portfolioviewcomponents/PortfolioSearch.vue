@@ -8,7 +8,8 @@
             aria-expanded="false" 
             aria-controls="searchCollapse"
             @click="(expanded = !expanded)">
-            <font-awesome-icon icon="fa-solid fa-search-plus" />
+            <font-awesome-icon v-if="expanded" icon="fa-solid fa-search-minus" />
+            <font-awesome-icon v-if="!expanded" icon="fa-solid fa-search-plus" />
             {{searchMenuText}}
         </button>
     </div>

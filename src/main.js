@@ -17,6 +17,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { faSearchPlus } from '@fortawesome/free-solid-svg-icons'
+import { faSearchMinus } from '@fortawesome/free-solid-svg-icons'
 import WorkCard from './components/WorkCard.vue'
 
 /* add icons to the library */
@@ -27,6 +28,7 @@ library.add(faEye)
 library.add(faChevronLeft)
 library.add(faChevronRight)
 library.add(faSearchPlus)
+library.add(faSearchMinus)
 
 createApp(App).component('work-card', WorkCard).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')
 
