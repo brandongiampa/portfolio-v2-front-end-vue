@@ -111,6 +111,7 @@
 <style lang="scss" scoped>
     img {
         max-width: 100%;
+        border: .5px solid #dee2e699;
     }
     .hashtags {
         color: #6c757d;
