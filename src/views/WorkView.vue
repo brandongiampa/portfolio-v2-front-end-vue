@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div class="col-12 py-5 text-center">
+    <div class="col-12 py-5 text-center back-to-portfolio">
         <router-link class="mt-2" to="/portfolio">
             <font-awesome-icon icon="fa-solid fa-chevron-left" /> Back to Portfolio
         </router-link>
@@ -128,9 +128,12 @@
         }
     }
     .features {
-        background-color: #e9ecef;
+        background-color: #dee2e6;
     }
     .technologies {
+        background-color: #e9ecef;
+    }
+    .back-to-portfolio {
         background-color: #f8f9fa;
     }
 </style>
