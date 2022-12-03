@@ -50,10 +50,10 @@
                     </option>
                 </select>
             </div>
-            <div id="submit-search-col" class="col-12 col-md-auto mt-5">
-                <button @click="submitSearch" class="btn btn-primary btn-lg" id="submit-works-search" type="submit">Search</button>
+            <div id="submit-search-col" class="col-auto mt-5">
+                <button @click="submitSearch" class="btn btn-primary btn-lg mr-0" id="submit-works-search" type="submit">Search</button>
             </div>
-            <div id="submit-search-col" class="col-12 col-md-auto mt-5">
+            <div id="submit-search-col" class="col-auto mt-5">
                 <button @click="clearAll" class="btn btn-link btn-lg" id="submit-works-search" type="submit">Clear</button>
             </div>
         </div>
