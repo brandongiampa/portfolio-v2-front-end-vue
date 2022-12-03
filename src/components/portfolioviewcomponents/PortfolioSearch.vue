@@ -51,7 +51,14 @@
                 </select>
             </div>
             <div id="submit-search-col" class="col-auto mt-5">
-                <button @click="submitSearch" class="btn btn-primary btn-lg mr-0" id="submit-works-search" type="submit">Search</button>
+                <button 
+                    @click="submitSearch" 
+                    class="btn btn-primary btn-lg mr-0" 
+                    id="submit-works-search" 
+                    type="submit"
+                    :disabled="disabled">
+                    Search
+                </button>
             </div>
             <div id="submit-search-col" class="col-auto mt-5">
                 <button @click="clearAll" class="btn btn-link btn-lg" id="submit-works-search" type="submit">Clear</button>
@@ -77,6 +84,12 @@ export default {
         searchMenuText() {
             if (this.expanded) return "Hide search menu"
             else return "Show search menu"
+        },
+        disabled() {
+            const titleEmpty = !this.inputtedTitle || this.inputtedTitle === ""
+            const featureEmpty = !this.selectedFeature || this.selectedFeature === ""
+            const technologyEmpty = !this.selectedTechnology || this.selectedTechnology === ""
+            return titleEmpty && featureEmpty && technologyEmpty
         }
     },
     methods: {
