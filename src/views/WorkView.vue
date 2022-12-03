@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div class="col-12 pt-4 pb-4 text-center">
+    <div class="col-12 py-5 text-center">
         <router-link class="mt-2" to="/portfolio">
             <font-awesome-icon icon="fa-solid fa-chevron-left" /> Back to Portfolio
         </router-link>
@@ -120,7 +120,6 @@
         font-size: 32px;
     }
     .features-and-technologies {
-        // background-color: #f8f9fa;
         li {
             font-size: 20px;
         }
