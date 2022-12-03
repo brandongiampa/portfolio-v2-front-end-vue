@@ -66,7 +66,7 @@
     export default {
         computed: {
             work() {
-                const title = this.$route.params.workname
+                const title = this.$route.params.workname.split('-').join(' ')
                 const works = this.$store.getters.works.filter((work) => {return work.title.toLowerCase() === title.toLowerCase()})
                 if (!works.length) {
                     return {
