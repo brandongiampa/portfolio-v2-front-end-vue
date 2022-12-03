@@ -23,12 +23,12 @@
                     type="search" 
                     id="website-title" 
                     name="title" 
-                    @keypress="checkIfEnter"
+                    @keyup="submitSearch"
                 >
             </div>
             <div class="col-12 col-md-4">
                 <label class="" for="website-feature">Feature</label>
-                <select @keypress="checkIfEnter" v-model="selectedFeature" class="form-control" name="features" id="website-feature">
+                <select @change="submitSearch" v-model="selectedFeature" class="form-control" name="features" id="website-feature">
                     <option value="" key="features-option-default">--ANY--</option>
                     <option 
                         v-for="(feature, index) of features"
@@ -40,7 +40,7 @@
             </div>
             <div class="col-12 col-md-4">
                 <label for="website-technology">Technology</label>
-                <select @keypress="checkIfEnter" v-model="selectedTechnology" class="form-control" name="tech" id="website-technology">
+                <select @change="submitSearch" v-model="selectedTechnology" class="form-control" name="tech" id="website-technology">
                     <option value="" key="technologies-option-default">--ANY--</option>
                     <option 
                         v-for="(technology, index) of technologies"
@@ -49,16 +49,6 @@
                         {{technology}}
                     </option>
                 </select>
-            </div>
-            <div id="submit-search-col" class="col-auto mt-5">
-                <button 
-                    @click="submitSearch" 
-                    class="btn btn-primary btn-lg mr-0" 
-                    id="submit-works-search" 
-                    type="submit"
-                    :disabled="disabled">
-                    Search
-                </button>
             </div>
             <div id="submit-search-col" class="col-auto mt-5">
                 <button @click="clearAll" class="btn btn-link btn-lg" id="submit-works-search" type="submit">Clear</button>
@@ -108,9 +98,6 @@ export default {
                     technology: this.selectedTechnology
                 }
             )
-        },
-        checkIfEnter(e) {
-            if (e.key === 'Enter') this.submitSearch()
         }
     },
     mounted() {
