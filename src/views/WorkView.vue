@@ -3,10 +3,10 @@
         <h1 class="underlined mb-5">Works</h1>
         <div class="pt-4" v-if="work.title && work.title !== ''">
             <div class="row gx-5">
-                <div class="col col-md-6">
+                <div class="col-12 col-lg-6 mb-4 mb-lg-2">
                     <img :src="work.imgUrl" />
                 </div>
-                <div class="col col-md-6 mt-4">
+                <div class="col-12 col-lg-6 mt-4">
                     <div class="mb-1 hashtags"><i>{{hashtags}}</i></div>
                     <h1 class="mb-2">{{work.title !== '' ? work.title : 'Uh-oh!'}}</h1>
                     <h2 style="color: #495057;">
