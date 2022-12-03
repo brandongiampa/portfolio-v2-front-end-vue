@@ -35,8 +35,8 @@
             <i>Error 404: No work exists with that name.</i>
         </div>
     </div>
-    <div class="row gx-5 mt-5 px-5 py-4 features-and-technologies" v-if="work.title && work.title !== ''">
-        <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start features">
+    <div class="row gx-5 mt-5 features-and-technologies" v-if="work.title && work.title !== ''">
+        <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start px-5 py-5 features">
             <div>
                 <h3 class="mb-3 text-center">Features</h3>
                 <ul>
@@ -46,19 +46,21 @@
                 </ul>
             </div>
         </div>
-        <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start technologies">
-            <h3 class="mb-3 text-center">Technologies</h3>
-            <ul>
-                <li v-for="(technology, index) of technologies" :key="`technologies-li-${index}`">
-                    {{technology}}
-                </li>
-            </ul>
+        <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start px-5 py-5 technologies">
+            <div>
+                <h3 class="mb-3 text-center">Technologies</h3>
+                <ul>
+                    <li v-for="(technology, index) of technologies" :key="`technologies-li-${index}`">
+                        {{technology}}
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-12 pt-4 pb-2 text-center">
-            <router-link class="mt-2" to="/portfolio">
-                <font-awesome-icon icon="fa-solid fa-chevron-left" /> Back to Portfolio
-            </router-link>
-        </div>
+    </div>
+    <div class="col-12 pt-4 pb-4 text-center">
+        <router-link class="mt-2" to="/portfolio">
+            <font-awesome-icon icon="fa-solid fa-chevron-left" /> Back to Portfolio
+        </router-link>
     </div>
 </template>
 
@@ -117,13 +119,18 @@
         font-size: 32px;
     }
     .features-and-technologies {
-        background-color: #f8f9fa;
+        // background-color: #f8f9fa;
         li {
-            margin-left: -10px;
             font-size: 20px;
         }
         a {
             text-decoration: none;
         }
+    }
+    .features {
+        background-color: #e9ecef;
+    }
+    .technologies {
+        background-color: #f8f9fa;
     }
 </style>
