@@ -4,7 +4,7 @@
             <h1 class="underlined mb-5">Works</h1>
             <div class="pt-4">
                 <div class="row gx-5">
-                    <div class="col col-md-6 col-lg-3"
+                    <div class="col-12 col-md-6 col-xl-3"
                         v-for="(work, index) of works"
                         :key="'homepage-work-card-'+(index + 1)"
                     >

@@ -4,7 +4,7 @@
         <portfolio-search @submit-search="refineSearchCriteria" />
         <div class="pt-4">
             <div class="row gx-5">
-                <div v-for="(work, index) in worksToShow" class="col col-md-6 col-lg-3 pb-5" :key="`work-card-div-${index}`">
+                <div v-for="(work, index) in worksToShow" class="col-12 col-md-6 col-xl-3 pb-5" :key="`work-card-div-${index}`">
                     <work-card :work="work" :index="(index-1)" />
                 </div>
             </div>
