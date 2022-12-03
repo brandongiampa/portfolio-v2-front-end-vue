@@ -47,26 +47,9 @@
 
 <script>
 export default {
-    data() {
-        return {
-            works: [
-                {
-                    imgUrl: 'https://imgur.com/bjNRaaP.png',
-                    title: 'Bitbuddy',
-                    subtitle: 'Cryptocurrency Converter',
-                    infoUrl: './works/bitbuddy',
-                    siteUrl: 'https://brandongiampa.host/bitbuddy',
-                    githubUrl: 'https://github.com'
-                },
-                {
-                    imgUrl: 'https://imgur.com/e17vhC5.png',
-                    title: 'Teachable',
-                    subtitle: 'Educational WordPress Theme',
-                    infoUrl: './works/teachable',
-                    siteUrl: 'https://brandongiampa.host/teachable',
-                    githubUrl: 'https://github.com'
-                },
-            ]
+    computed: {
+        works() {
+            return this.$store.getters.works.slice(0, 4)
         }
     }
 }
