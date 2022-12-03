@@ -12,7 +12,20 @@
                     <h2 style="color: #495057;">
                         <i>{{ work.subtitle }}</i>
                     </h2>
-                    <div class="description">
+                    <div class="d-flex justify-content-space-between icons">
+                        <div>
+                            <a :href="work.siteUrl">
+                                <font-awesome-icon icon="fa-solid fa-eye" />
+                            </a>
+                        </div>
+                        <div class="px-3">
+                            <a :href="work.githubUrl" style="color: #008eff;">
+                                <font-awesome-icon icon="fa-brands fa-github" />
+                            </a>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="mt-2 description">
                         <p v-for="(paragraph, index) of description" :key="`description-paragraph-${index}`">{{paragraph}}</p>
                     </div>
                 </div>
@@ -99,6 +112,9 @@
     }
     .hashtags {
         color: #6c757d;
+    }
+    .icons {
+        font-size: 32px;
     }
     .features-and-technologies {
         background-color: #f8f9fa;
