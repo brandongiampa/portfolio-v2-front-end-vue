@@ -1,13 +1,15 @@
 <template>
     <div class="py-3">
         <button 
-            class="btn btn-primary" 
+            class="btn btn-link p-0 search-toggle" 
             type="button" 
             data-bs-toggle="collapse" 
             data-bs-target="#searchCollapse" 
             aria-expanded="false" 
-            aria-controls="searchCollapse">
+            aria-controls="searchCollapse"
+            @click="(expanded = !expanded)">
             <font-awesome-icon icon="fa-solid fa-search-plus" />
+            {{searchMenuText}}
         </button>
     </div>
     <div class="collapse" id="searchCollapse">
@@ -62,11 +64,18 @@
 export default {
     data() {
         return {
+            expanded: false,
             inputtedTitle: "",
             selectedFeature: "",
             selectedTechnology: "",
             features: ["API", "Smooth Scroll", "Login System", "eCommerce", "Browser-Side Search"],
             technologies: ["HTML", "CSS", "Javascript", "PHP", "mySQL", "Vue", "Bootstrap", "WordPress", "Sass", "Laravel Mix", "Axios"]
+        }
+    },
+    computed: {
+        searchMenuText() {
+            if (this.expanded) return "Hide search menu"
+            else return "Show search menu"
         }
     },
     methods: {
@@ -96,3 +105,12 @@ export default {
     emits: ['submitSearch']
 }
 </script>
+
+<style>
+    .search-toggle {
+        font-size: 13px;
+        font-weight: 100px;
+        color: #6c757d;
+        text-decoration: none;
+    }
+</style>
