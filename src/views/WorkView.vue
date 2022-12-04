@@ -35,25 +35,27 @@
             <i>Error 404: No work exists with that name.</i>
         </div>
     </div>
-    <div class="row gx-5 mt-5 features-and-technologies" v-if="work.name && work.name !== ''">
-        <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start px-5 py-5 features">
-            <div>
-                <h3 class="mb-3 text-center">Features</h3>
-                <ul>
-                    <li v-for="(feature, index) of features" :key="`features-li-${index}`">
-                        {{feature}}
-                    </li>
-                </ul>
+    <div class="container-fluid mt-5 features-and-technologies">
+        <div class="row" v-if="work.name && work.name !== ''">
+            <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start px-5 py-5 features">
+                <div>
+                    <h3 class="mb-3 text-center">Features</h3>
+                    <ul>
+                        <li v-for="(feature, index) of features" :key="`features-li-${index}`">
+                            {{feature}}
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start px-5 py-5 technologies">
-            <div>
-                <h3 class="mb-3 text-center">Technologies</h3>
-                <ul>
-                    <li v-for="(technology, index) of technologies" :key="`technologies-li-${index}`">
-                        {{technology}}
-                    </li>
-                </ul>
+            <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start px-5 py-5 technologies">
+                <div>
+                    <h3 class="mb-3 text-center">Technologies</h3>
+                    <ul>
+                        <li v-for="(technology, index) of technologies" :key="`technologies-li-${index}`">
+                            {{technology}}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
