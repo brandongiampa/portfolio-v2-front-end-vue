@@ -4,7 +4,7 @@
         <portfolio-search @submit-search="refineSearchCriteria" />
         <div class="pt-4">
             <div class="row gx-5">
-                <div v-for="(work, index) in worksToShow" class="col-12 col-md-6 col-xl-3 pb-5" :key="`work-card-div-${index}`">
+                <div v-for="(work, index) of worksToShow" class="col-12 col-md-6 pb-5" :key="`work-card-div-${index}`">
                     <work-card :work="work" :index="(index-1)" />
                 </div>
             </div>
@@ -20,6 +20,7 @@
     export default {
         computed: {
             worksFullList() {
+                // console.log(this.$store.getters.works)
                 return this.$store.getters.works
             },
             offset() {
@@ -27,9 +28,9 @@
             },
             refinedWorksList() {
                 let refinedWorksList = this.worksFullList
-                if (this.title && this.title !== '') {
+                if (this.name && this.name !== '') {
                     refinedWorksList = refinedWorksList.filter((work) => {
-                        return work.title.toLowerCase().includes(this.title.toLowerCase())
+                        return work.name.toLowerCase().includes(this.name.toLowerCase())
                     })
                 }
                 if (this.feature && this.feature !== '') {
@@ -42,9 +43,13 @@
                         return work.technologies.toLowerCase().includes(this.technology.toLowerCase())
                     })
                 }
+                // console.log("Refined works list:")
+                // console.log(refinedWorksList)
                 return refinedWorksList
             },
             worksToShow() {
+                console.log("works to show:")
+                console.log(this.refinedWorksList.slice(this.offset, this.offset + WORKS_PER_PAGE))
                 return this.refinedWorksList.slice(this.offset, this.offset + WORKS_PER_PAGE)
             },
             numberOfPages() {
@@ -56,7 +61,7 @@
                 this.currentIndex = index
             },
             refineSearchCriteria: function(searchCriteriaObj) {
-                this.title = searchCriteriaObj.title
+                this.name = searchCriteriaObj.name
                 this.feature = searchCriteriaObj.feature
                 this.technology = searchCriteriaObj.technology
                 this.setCurrentIndex(1)
@@ -65,13 +70,17 @@
         data() {
             return {
                 currentIndex: 1,
-                title: "",
+                name: "",
                 feature: "",
                 technology: ""
             }
         },
         components: {
             PortfolioPaginator, PortfolioSearch
+        },
+        update() {
+            for (let work of this.worksToShow) console.log(work)
+            console.log("changes complete")
         }
     }
 </script>

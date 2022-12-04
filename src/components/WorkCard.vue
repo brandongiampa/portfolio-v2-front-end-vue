@@ -1,26 +1,29 @@
 <template>
     <div class="card" :key="`work-card-${index}`">
-        <img :src="work.imgUrl" class="card-img-top" :alt="work.title">
+        <a :href="work.site_url">
+            <img :src="work.img_url" class="card-img-top" :alt="work.title" />
+        </a>
+        
         <div class="card-body">
-            <h3 class="card-title text-center">{{ work.title }}</h3>
-            <p class="card-subtitle text-center" style="color: #495057;">
-                <i>{{ work.subtitle }}</i>
+            <h3 class="card-name text-center">{{ work.name }}</h3>
+            <p class="card-subheader text-center" style="color: #495057;">
+                <i>{{ work.subheader }}</i>
             </p>
             <hr/>
             <div class="py-1">
                 <div class="row">
                     <div class="col-4 text-center icon">
-                        <a style="color: #172125;" :href="work.siteUrl">
+                        <a style="color: #172125;" :href="work.site_url">
                             <font-awesome-icon icon="fa-solid fa-eye" />
                         </a>
                     </div>
                     <div class="col-4 text-center icon">
-                        <a style="color: #172125;" :href="work.infoUrl">
+                        <a style="color: #172125;" :href="`/works/${work.name}`">
                             <font-awesome-icon icon="fa-solid fa-circle-info" />
                         </a>
                     </div>
                     <div class="col-4 text-center icon">
-                        <a style="color: #172125;" :href="work.githubUrl">
+                        <a style="color: #172125;" :href="work.github_url">
                             <font-awesome-icon icon="fa-brands fa-github" />
                         </a>
                     </div>
@@ -44,3 +47,13 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    .card-body {
+        border-top: 1px #33333333 solid;
+       .icon a {
+            text-decoration: none;
+            font-size: 32px;
+        }
+    }
+</style>

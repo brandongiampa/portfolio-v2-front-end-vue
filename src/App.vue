@@ -11,6 +11,10 @@
     components: {
       NavigationBar,
       SiteFooter
+    },
+    async created() {
+      await this.$store.dispatch('setWorks', this.$store.getters.works)
+      //do something to unhide UI
     }
   }
 </script>

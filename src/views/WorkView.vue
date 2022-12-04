@@ -1,25 +1,25 @@
 <template>
     <div class="container pt-5">
         <h1 class="underlined mb-5">Works</h1>
-        <div class="pt-4" v-if="work.title && work.title !== ''">
+        <div class="pt-4" v-if="work.name && work.name !== ''">
             <div class="row gx-5">
                 <div class="col-12 col-lg-6 mb-4 mb-lg-2">
-                    <img :src="work.imgUrl" />
+                    <img :src="work.img_url" />
                 </div>
                 <div class="col-12 col-lg-6 mt-4">
                     <div class="mb-1 hashtags"><i>{{hashtags}}</i></div>
-                    <h1 class="mb-2">{{work.title !== '' ? work.title : 'Uh-oh!'}}</h1>
+                    <h1 class="mb-2">{{work.name !== '' ? work.name : 'Uh-oh!'}}</h1>
                     <h2 style="color: #495057;">
-                        <i>{{ work.subtitle }}</i>
+                        <i>{{ work.subheader }}</i>
                     </h2>
                     <div class="d-flex justify-content-space-between icons">
                         <div>
-                            <a :href="work.siteUrl">
+                            <a :href="work.site_url">
                                 <font-awesome-icon icon="fa-solid fa-eye" />
                             </a>
                         </div>
                         <div class="px-3">
-                            <a :href="work.githubUrl" style="color: #008eff;">
+                            <a :href="work.github_url" style="color: #008eff;">
                                 <font-awesome-icon icon="fa-brands fa-github" />
                             </a>
                         </div>
@@ -31,11 +31,11 @@
                 </div>
             </div>
         </div>
-        <div class="pt-4" v-if="!work.title || work.title === ''">
+        <div class="pt-4" v-if="!work.name || work.name === ''">
             <i>Error 404: No work exists with that name.</i>
         </div>
     </div>
-    <div class="row gx-5 mt-5 features-and-technologies" v-if="work.title && work.title !== ''">
+    <div class="row gx-5 mt-5 features-and-technologies" v-if="work.name && work.name !== ''">
         <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start px-5 py-5 features">
             <div>
                 <h3 class="mb-3 text-center">Features</h3>
@@ -68,21 +68,21 @@
     export default {
         computed: {
             work() {
-                const title = this.$route.params.workname.split('-').join(' ')
-                const works = this.$store.getters.works.filter((work) => {return work.title.toLowerCase() === title.toLowerCase()})
+                const name = this.$route.params.workname.split('-').join(' ')
+                const works = this.$store.getters.works.filter((work) => {return work.name.toLowerCase() === name.toLowerCase()})
                 if (!works.length) {
                     return {
-                        imgUrl: '',
-                        title: '',
-                        subtitle: '',
+                        img_url: '',
+                        name: '',
+                        subheader: '',
                         infoUrl: '',
-                        siteUrl: '',
-                        githubUrl: '',
+                        site_url: '',
+                        github_url: '',
                         technologies: '',
                         features: '',
                         description: '',
                         hashtags: '',
-                        carouselImgUrls: ''
+                        carousel_img_urls: ''
                     }
                 }
                 return works[0]
