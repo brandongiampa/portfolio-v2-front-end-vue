@@ -4,7 +4,7 @@
             <h1 class="underlined mb-5">Technologies</h1>
             <br/>
             <div class="pt-4" id="technologies-bg">
-                <div class="row">
+                <div class="row m-0">
                     <div class="col-3 d-flex align-items-center justify-content-center p-5" v-for="(technology, index) of technologies" :key="'technology-link-'+(index+1)">
                         <a :href="'./portfolio?technology='+technology.name">
                             <img :src="technology.imgUrl" :alt="technology.name" />
@@ -57,5 +57,8 @@ export default {
     }
     img {
         height: 120px;
+        @media (max-width: 575.99px) {
+            height: 65px;
+        }
     }
 </style>
