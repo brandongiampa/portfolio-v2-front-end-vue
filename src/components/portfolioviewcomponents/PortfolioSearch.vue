@@ -13,45 +13,59 @@
             {{searchMenuText}}
         </button>
     </div>
-    <div class="collapse p-3" id="searchCollapse" style="background-color: #f8f9fa;">
-        <div class="row align-items-center py-4">
-            <div class="col-12 col-md-4">
-                <label for="website-title">Title</label>
-                <input 
-                    v-model="inputtedTitle" 
-                    class="form-control" 
-                    type="search" 
-                    id="website-title" 
-                    name="title" 
-                    @keyup="submitSearch"
-                >
-            </div>
-            <div class="col-12 col-md-4">
-                <label class="" for="website-feature">Feature</label>
-                <select @change="submitSearch" v-model="selectedFeature" class="form-control" name="features" id="website-feature">
-                    <option value="" key="features-option-default">--ANY--</option>
-                    <option 
-                        v-for="(feature, index) of features"
-                        :value="feature"
-                        :key="`feature-option-${index+1}`">
-                        {{feature}}
-                    </option>
-                </select>
-            </div>
-            <div class="col-12 col-md-4">
-                <label for="website-technology">Technology</label>
-                <select @change="submitSearch" v-model="selectedTechnology" class="form-control" name="tech" id="website-technology">
-                    <option value="" key="technologies-option-default">--ANY--</option>
-                    <option 
-                        v-for="(technology, index) of technologies"
-                        :value="technology"
-                        :key="`technology-option-${index+1}`">
-                        {{technology}}
-                    </option>
-                </select>
-            </div>
-            <div id="submit-search-col" class="col-auto mt-5">
-                <button @click="clearAll" class="btn btn-link btn-lg" id="submit-works-search" type="submit">Clear</button>
+    <div class="collapse" id="searchCollapse" style="background-color: #f8f9fa;">
+        <div class="py-3">
+            <div class="row align-items-center py-4">
+                <div class="col-12 col-md-4">
+                    <label for="website-name">Name</label>
+                    <input 
+                        class="form-control" 
+                        type="search" 
+                        id="website-name" 
+                        name="Name" 
+                        @keyup="updateNameQuery"
+                        :value="inputtedName"
+                    >
+                </div>
+                <div class="col-12 col-md-4">
+                    <label class="" for="website-feature">Feature</label>
+                    <select 
+                        @change="updateFeatureQuery" 
+                        class="form-control" 
+                        name="features" 
+                        id="website-feature"
+                    >
+                        <option value="" key="features-option-default">--ANY--</option>
+                        <option 
+                            v-for="(feature, index) of features"
+                            :value="feature"
+                            :selected="(selectedFeature === feature)"
+                            :key="`feature-option-${index+1}`">
+                            {{feature}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4">
+                    <label for="website-technology">Technology</label>
+                    <select 
+                        @change="updateTechnologyQuery" 
+                        class="form-control" 
+                        name="tech" 
+                        id="website-technology"
+                    >
+                        <option value="" key="technologies-option-default">--ANY--</option>
+                        <option 
+                            v-for="(technology, index) of technologies"
+                            :value="technology"
+                            :selected="technology === selectedTechnology"
+                            :key="`technology-option-${index+1}`">
+                            {{technology}}
+                        </option>
+                    </select>
+                </div>
+                <div id="submit-search-col" class="col-auto mt-5">
+                    <button @click="clearAll" class="btn btn-link btn-lg" id="submit-works-search" type="submit">Clear</button>
+                </div>
             </div>
         </div>
     </div>
@@ -63,9 +77,6 @@ export default {
     data() {
         return {
             expanded: false,
-            inputtedTitle: "",
-            selectedFeature: "",
-            selectedTechnology: "",
             features: ["API", "Smooth Scroll", "Login System", "eCommerce", "Browser-Side Search"],
             technologies: ["HTML", "CSS", "Javascript", "PHP", "mySQL", "Vue", "Bootstrap", "WordPress", "Sass", "Laravel Mix", "Axios"]
         }
@@ -75,35 +86,30 @@ export default {
             if (this.expanded) return "Hide search menu"
             else return "Show search menu"
         },
-        disabled() {
-            const titleEmpty = !this.inputtedTitle || this.inputtedTitle === ""
-            const featureEmpty = !this.selectedFeature || this.selectedFeature === ""
-            const technologyEmpty = !this.selectedTechnology || this.selectedTechnology === ""
-            return titleEmpty && featureEmpty && technologyEmpty
+        inputtedName() {
+            return this.$store.getters.inputtedName
+        },
+        selectedFeature() {
+            return this.$store.getters.selectedFeature
+        },
+        selectedTechnology() {
+            return this.$store.getters.selectedTechnology
         }
     },
     methods: {
-        clearAll: function() {
-            this.inputtedTitle = ''
-            this.selectedFeature = ''
-            this.selectedTechnology = ''
-            this.submitSearch()
+        updateNameQuery: function(e) {
+            this.$store.dispatch('setInputtedName', e.target.value)
         },
-        submitSearch: function() {
-            this.$emit(
-                'submitSearch', 
-                {
-                    title: this.inputtedTitle,
-                    feature: this.selectedFeature,
-                    technology: this.selectedTechnology
-                }
-            )
+        updateFeatureQuery: function(e) {
+            this.$store.dispatch('setSelectedFeature', e.target.value)
+        },
+        updateTechnologyQuery: function(e) {
+            this.$store.dispatch('setSelectedTechnology', e.target.value)
+        },
+        clearAll: function() {
+            this.$store.dispatch('clearSearchQuery')
         }
-    },
-    mounted() {
-        this.submitSearch()
-    },
-    emits: ['submitSearch']
+    }
 }
 </script>
 

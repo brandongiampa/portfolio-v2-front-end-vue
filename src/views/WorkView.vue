@@ -106,6 +106,9 @@
             description() {
                 return this.work.description.split(/<p\/?>/)
             }
+        },
+        created() {
+            this.$store.dispatch('clearSearchQuery')
         }
     }
 </script>

@@ -3,18 +3,21 @@ import axios from "axios"
 const portfolioWorksModule = {
     state: {
         defaultWork: {
-            imgUrl: 'https://imgur.com/bjNRaaP.png',
-            title: '',
-            subtitle: '',
-            infoUrl: '',
-            siteUrl: '',
-            githubUrl: '',
+            img_url: 'https://imgur.com/bjNRaaP.png',
+            name: '',
+            subheader: '',
+            info_url: '',
+            site_url: '',
+            github_url: '',
             technologies: '',
             features: '',
             hashtags: "",
             description: ""
         },
-        works: []
+        works: [],
+        inputtedName: null,
+        selectedFeature: null,
+        selectedTechnology: null
     },
     getters: {
         works(state) {
@@ -22,6 +25,18 @@ const portfolioWorksModule = {
         },
         defaultWork(state) {
             return state.defaultWork
+        },
+        inputtedName(state) {
+            return state.inputtedName
+        },
+        selectedFeature(state) {
+            return state.selectedFeature
+        },
+        selectedTechnology(state) {
+            return state.selectedTechnology
+        },
+        hasSearchQuery(state) {
+            return (state.inputtedName && state.selectedFeature && state.selectedTechnology) ? false : true
         }
     },
     mutations: {
@@ -29,10 +44,33 @@ const portfolioWorksModule = {
             state.works = works
         },
         setDefaultWork(state, work) {
-            state.work = work
+            state.defaultWork = work
+        },
+        setInputtedName(state, name) {
+            state.inputtedName = name
+        },
+        setSelectedFeature(state, feature) {
+            state.selectedFeature = feature
+        },
+        setSelectedTechnology(state, technology) {
+            state.selectedTechnology = technology
         }
     },
     actions: {
+        setInputtedName({commit}, name) {
+            commit('setInputtedName', name)
+        },
+        setSelectedFeature({commit}, feature) {
+            commit('setSelectedFeature', feature)
+        },
+        setSelectedTechnology({commit}, technology) {
+            commit('setSelectedTechnology', technology)
+        },
+        clearSearchQuery({commit}) {
+            commit('setInputtedName', null)
+            commit('setSelectedFeature', null)
+            commit('setSelectedTechnology', null)
+        },
         setWorks({commit}) {
             /**
              * Insert placeholders while API is called so page doesn't suddenly expand.

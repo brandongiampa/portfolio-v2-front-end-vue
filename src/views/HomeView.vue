@@ -23,6 +23,9 @@ export default {
     WorksSection,
     TechnologiesSection,
     TestimonialsSection
+  },
+  mounted() {
+    this.$store.dispatch('clearSearchQuery')
   }
 }
 </script>

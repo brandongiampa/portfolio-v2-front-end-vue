@@ -5,10 +5,16 @@
             <br/>
             <div class="pt-4" id="technologies-bg">
                 <div class="row m-0">
-                    <div class="col-3 d-flex align-items-center justify-content-center p-5" v-for="(technology, index) of technologies" :key="'technology-link-'+(index+1)">
-                        <a :href="'./portfolio?technology='+technology.name">
-                            <img :src="technology.imgUrl" :alt="technology.name" />
-                        </a>
+                    <div 
+                        class="col-3 d-flex align-items-center justify-content-center p-5" 
+                        v-for="(technology, index) of technologies" :key="'technology-link-'+(index+1)"
+                    >
+                        <router-link to="/portfolio" @click="setSelectedTechnology(technology.name)">
+                            <img 
+                                :src="technology.imgUrl" 
+                                :alt="technology.name" 
+                            />
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -22,11 +28,11 @@ export default {
         return {
             technologies: [
                 {
-                    name: 'HTML5',
+                    name: 'HTML',
                     imgUrl: 'https://imgur.com/hzgllqZ.png'
                 },
                 {
-                    name: 'CSS3',
+                    name: 'CSS',
                     imgUrl: 'https://imgur.com/tFctgth.png'
                 },
                 {
@@ -46,6 +52,13 @@ export default {
                     imgUrl: 'https://imgur.com/rq7uYft.png'
                 }
             ]
+        }
+    },
+    methods: {
+        setSelectedTechnology(technology) {
+            this.$store.dispatch('setSelectedTechnology', technology)
+            console.log(this.$store.getters.selectedTechnology)
+            this.$router.push('./portfolio')
         }
     }
 }
