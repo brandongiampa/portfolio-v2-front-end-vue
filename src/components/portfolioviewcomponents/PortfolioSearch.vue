@@ -15,7 +15,7 @@
     </div>
     <div class="collapse" id="searchCollapse" style="background-color: #f8f9fa;">
         <div class="py-3">
-            <div class="row align-items-center py-4">
+            <div class="row align-items-center px-3 py-4">
                 <div class="col-12 col-md-4">
                     <label for="website-name">Name</label>
                     <input 
@@ -28,7 +28,7 @@
                     >
                 </div>
                 <div class="col-12 col-md-4">
-                    <label class="" for="website-feature">Feature</label>
+                    <label class="mt-2 mt-md-0" for="website-feature">Feature</label>
                     <select 
                         @change="updateFeatureQuery" 
                         class="form-control" 
@@ -46,7 +46,7 @@
                     </select>
                 </div>
                 <div class="col-12 col-md-4">
-                    <label for="website-technology">Technology</label>
+                    <label class="mt-2 mt-md-0" for="website-technology">Technology</label>
                     <select 
                         @change="updateTechnologyQuery" 
                         class="form-control" 
@@ -63,8 +63,8 @@
                         </option>
                     </select>
                 </div>
-                <div id="submit-search-col" class="col-auto mt-5">
-                    <button @click="clearAll" class="btn btn-link btn-lg" id="submit-works-search" type="submit">Clear</button>
+                <div id="submit-search-col" class="col-auto mt-3 mt-md-4">
+                    <button @click="clearAll" class="btn btn-primary btn-lg" id="submit-works-search" type="submit">Clear All</button>
                 </div>
             </div>
         </div>
