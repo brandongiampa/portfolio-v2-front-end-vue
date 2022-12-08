@@ -10,7 +10,7 @@
                 type="button" 
                 class="btn btn-primary rounded-0 text-white mt-3"
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                data-bs-target="#testimonialModal"
             >
                 Leave Brandon a Testimonial
             </button>  

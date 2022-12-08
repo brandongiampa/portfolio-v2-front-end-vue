@@ -1,32 +1,43 @@
 <template>
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade bd-example-modal-lg" id="testimonialModal" tabindex="-1" aria-labelledby="testimonialModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <h4 class="modal-title" id="testimonialModalLabel">Leave Brandon a Testimonial</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Recipient:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <label for="author-name" class="col-form-label">Your Name:</label>
+                            <input type="text" class="form-control" id="author-name">
                         </div>
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <label for="author-company" class="col-form-label">Your Company:</label>
+                            <input type="text" class="form-control" id="author-company">
+                        </div>
+                        <div class="mb-3">
+                            <label for="author-website" class="col-form-label">Your (Company) Website:</label>
+                            <input type="url" class="form-control" id="author-website">
+                        </div>
+                        <div class="mb-3">
+                            <label for="testimonial-text" class="col-form-label">Testimonial:</label>
+                            <textarea rows="10" cols="50" class="form-control" id="testimonial-text"></textarea>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
+                <div class="modal-footer justify-content-start">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary btn-lg rounded-3">Send</button>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<style lang="scss">
+    label {
+        font-weight: 400;
+        font-size: 14px !important;
+    }
+</style>
