@@ -6,7 +6,14 @@
                 <p style="color: #343a40;" class="mb-1 testimonial-meta"><b>{{testimonial.author}}</b> from <a :href="testimonial.companyUrl">{{testimonial.company}}</a> says:</p>
                 <p class="mt-0 text-black testimonial-text">{{testimonial.text}}</p>
             </div>
-            <a class="btn btn-primary rounded-0 text-white mt-3" href="./leave-testimonial">Leave Brandon a Testimonial</a>  
+            <button 
+                type="button" 
+                class="btn btn-primary rounded-0 text-white mt-3"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+            >
+                Leave Brandon a Testimonial
+            </button>  
         </div>
     </section>
 </template>
