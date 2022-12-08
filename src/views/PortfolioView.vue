@@ -4,8 +4,8 @@
         <portfolio-search />
         <div class="pt-4">
             <p class="mb-5" v-if="worksToShow.length"><i>{{showingString}}</i></p>
-            <p v-if="!worksToShow.length"><i>{{showingString}}</i></p>
-            <p v-if="!worksToShow.length"><i>Your query did not heed any results.</i></p>
+            <p class="mb-5 pb-5" v-if="!worksToShow.length"><i>{{showingString}}</i></p>
+            <p class="mb-5 pb-5" v-if="!worksToShow.length"><i>Your query did not heed any results.</i></p>
             <div class="row gx-5">
                 <div v-for="(work, index) of worksToShow" class="col-12 col-md-6 pb-5" :key="`work-card-div-${index}`">
                     <work-card :work="work" :index="(index-1)" />
