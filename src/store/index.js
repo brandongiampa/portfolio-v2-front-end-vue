@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import aboutTextModule from './modules/AboutTextModule.js'
-import PortfolioWorksModule from './modules/PortfolioWorksModule.js'
+import portfolioWorksModule from './modules/PortfolioWorksModule.js'
+import testimonialsModule from './modules/TestimonialsModule.js'
 
 export default createStore({
   state: {
@@ -13,6 +14,7 @@ export default createStore({
   },
   modules: {
     aboutTextModule,
-    PortfolioWorksModule
+    portfolioWorksModule,
+    testimonialsModule
   }
 })

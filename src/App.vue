@@ -17,6 +17,7 @@
     },
     async created() {
       await this.$store.dispatch('setWorks', this.$store.getters.works)
+      await this.$store.dispatch('setTestimonials')
       //do something to unhide UI
     }
   }
