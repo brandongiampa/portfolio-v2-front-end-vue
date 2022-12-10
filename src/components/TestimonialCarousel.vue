@@ -18,7 +18,7 @@
                 key="carousel-item-0">
                 <div class="d-flex flex-column align-items-center justify-content-center text-light h-100">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-3">{{ testimonials[0].text }}</p>
+                        <p class="mb-3">"{{ testimonials[0].text }}"</p>
                         <footer class="blockquote-footer text-center">{{ testimonials[0].author }}, 
                             <a :href="testimonials[0].url && testimonials[0].url !== '' ? testimonials[0].url : '#'">{{ testimonials[0].company }}</a>
                         </footer>
@@ -31,7 +31,7 @@
                 :key="'-carousel-item-'+n">
                 <div class="d-flex flex-column align-items-center justify-content-center text-light h-100">
                     <blockquote class="blockquote text-center">
-                        <p class="mb-3">{{ testimonials[n].text }}</p>
+                        <p class="mb-3">"{{ testimonials[n].text }}"</p>
                         <footer class="blockquote-footer text-center">{{ testimonials[n].author }}, 
                             <a :href="testimonials[n].url && testimonials[n].url !== '' ? testimonials[n].url : '#'">{{ testimonials[n].company }}</a>
                         </footer>
