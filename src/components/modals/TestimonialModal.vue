@@ -121,7 +121,8 @@
             },
             makeApiCall() {
                 return new Promise((resolve, reject) => {
-                    axios.post('http://localhost:8000/api/testimonials', {
+                    const URL = this.$store.getters.API_URL
+                    axios.post(`${URL}/testimonials`, {
                         author: this.authorName,
                         company: this.authorCompany,
                         company_url: this.authorCompanyUrl,
