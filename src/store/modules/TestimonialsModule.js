@@ -48,9 +48,10 @@ const testimonialsModule = {
     actions: {
         setTestimonials({commit}) {
             return new Promise((resolve) => {
+                const API_URL = this.getters.API_URL
                 axios.request( {
                     method: 'GET',
-                    url: 'http://localhost:8000/api/testimonials'
+                    url: `${API_URL}/testimonials`
                 })
                 .then((response) => {
                     const arr = []
@@ -58,7 +59,6 @@ const testimonialsModule = {
                         if (testimonial.approved) arr.push(testimonial)
                     }
                     commit('setTestimonials', arr)
-                    console.log(this.getters.testimonials)
                     resolve()
                 })
             })

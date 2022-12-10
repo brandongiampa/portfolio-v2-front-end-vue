@@ -5,8 +5,12 @@ import testimonialsModule from './modules/TestimonialsModule.js'
 
 export default createStore({
   state: {
+    API_URL: 'https://portfoliov2api.brandongiampa.host/api'
   },
   getters: {
+    API_URL(state) {
+      return state.API_URL
+    }
   },
   mutations: {
   },

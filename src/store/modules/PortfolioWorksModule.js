@@ -81,9 +81,11 @@ const portfolioWorksModule = {
                 commit('setWorks', arr)
             }
             return new Promise((resolve) => {
+                const API_URL = this.getters.API_URL
+                console.log(API_URL)
                 axios.request( {
                     method: 'GET',
-                    url: 'http://localhost:8000/api/works'
+                    url: `${API_URL}/works`
                 })
                 .then((response) => {
                     commit('setWorks', response.data.reverse())
