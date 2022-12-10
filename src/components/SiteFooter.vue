@@ -5,23 +5,25 @@
             <div class="row pt-4">
                 <div class="col-12 col-lg-6">
                     <h2 class="text-light mb-4">Send Brandon a Message!</h2>
-                    <form action="#" class="px-md-2">
+                    <div class="px-md-2">
+                    <!-- <form class="px-md-2"> -->
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="inputName">Name</label>
-                                <input type="text" class="form-control" id="inputName">
+                                <input v-model="name" type="text" class="form-control" id="inputName">
                             </div>
                             <div class="form-group col-12 mt-3">
                                 <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" id="inputEmail">
+                                <input v-model="email" type="email" class="form-control" id="inputEmail">
                             </div>
                             <div class="form-group col-12 mt-3">
                                 <label for="inputMessage">Message</label>
-                                <textarea class="form-control" id="inputMessage" rows="8"></textarea>
+                                <textarea v-model="message" class="form-control" id="inputMessage" rows="8"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary text-light mt-4 ml-1">Send</button>
+                            <button :disabled="disableSend" @click="sendEmail" type="submit" class="btn btn-primary text-light mt-4 ml-1">Send</button>
                         </div>
-                    </form>
+                    <!-- </form> -->
+                </div>
                 </div>
                 <div class="col-12 col-md-6 d-flex flex-column align-items-left justify-content-space-between">
                     <div id="contact" class="pt-5 pt-lg-0 px-md-2">
@@ -47,6 +49,9 @@
     export default {
         data() {
             return {
+                name: "",
+                email: "",
+                message: "",
                 hashtags: [
                     'webdeveloper',
                     'softwareengineer',
@@ -61,6 +66,22 @@
                     'remote',
                     'willingtorelocate'
                 ]
+            }
+        },
+        methods: {
+            sendEmail() {
+                console.log(this.name)
+                console.log(this.email)
+                console.log(this.message)
+            },
+            isValidEmail(email) {
+                const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+                return regex.test(email)
+            }
+        },
+        computed: {
+            disableSend: function() {
+                return this.name === "" || this.email === ""  || !this.isValidEmail(this.email) || this.message === ""
             }
         }
     }
