@@ -27,4 +27,29 @@
   section:nth-child(even) {
     background-color: #f8f9fa;
   }
+  @mixin animate($animation,$duration,$method,$times){
+        animation: $animation $duration $method $times;
+    }
+    @mixin keyframes($name){
+        @keyframes #{$name}{
+            @content;
+        }
+    }
+    .sending-message{ 
+        @include keyframes(fade){
+            0%{
+                opacity: 1;
+            }
+            50%{
+                opacity: 0.5;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+        @include animate(fade, 1s, linear, 1);
+    }
+    .exit-button {
+        margin-top: -6px;
+    }
 </style>

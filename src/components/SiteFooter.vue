@@ -5,8 +5,21 @@
             <div class="row pt-4">
                 <div class="col-12 col-lg-6">
                     <h2 class="text-light mb-4">Send Brandon a Message!</h2>
+                    <div v-if="showErrorMessage" class="alert alert-danger font-weight-bold">
+                        There was an error sending your message. Please try again.
+                    </div>
+                    <div v-if="showSuccessMessage" class="alert alert-success font-weight-bold">
+                        Your email was sent successfully!
+                        <button 
+                            @click="(showSuccessMessage = false)" 
+                            class="btn btn-link text-dark exit-button" 
+                            data-bs-dismiss="modal" 
+                            aria-label="Close"
+                        >
+                            <i>Close</i>
+                        </button>
+                    </div>
                     <div class="px-md-2">
-                    <!-- <form class="px-md-2"> -->
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="inputName">Name</label>
@@ -21,8 +34,8 @@
                                 <textarea v-model="message" class="form-control" id="inputMessage" rows="8"></textarea>
                             </div>
                             <button :disabled="disableSend" @click="sendEmail" type="submit" class="btn btn-primary text-light mt-4 ml-1">Send</button>
+                            <div v-if="isSendingEmail" class="text-muted sending-message"><i>Sending...</i></div>
                         </div>
-                    <!-- </form> -->
                 </div>
                 </div>
                 <div class="col-12 col-md-6 d-flex flex-column align-items-left justify-content-space-between">
@@ -46,12 +59,17 @@
 </template>
 
 <script>
+    let successfulApiCall
+    import axios from "axios"
     export default {
         data() {
             return {
                 name: "",
                 email: "",
                 message: "",
+                showSuccessMessage: false,
+                showErrorMessage: false,
+                isSendingEmail: false,
                 hashtags: [
                     'webdeveloper',
                     'softwareengineer',
@@ -69,14 +87,49 @@
             }
         },
         methods: {
-            sendEmail() {
-                console.log(this.name)
-                console.log(this.email)
-                console.log(this.message)
+            clearForm() {
+                this.name = ""
+                this.email = ""
+                this.message = ""
             },
             isValidEmail(email) {
                 const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
                 return regex.test(email)
+            },
+            async sendEmail() {
+                this.isSendingEmail = true
+                await this.makeApiCall()
+                if (successfulApiCall) {
+                    this.showSuccessMessage = true
+                    this.clearForm()
+                }
+                else this.showSuccessMessage = false
+                this.isSendingEmail = false
+            },
+            makeApiCall() {
+                return new Promise((resolve, reject) => {
+                    const URL = this.$store.getters.API_URL
+                    axios.post(`${URL}/emailer`, {
+                        name: this.name,
+                        from_email: this.email,
+                        body: this.message
+                    })
+                    .then(function (response) {
+                        console.log(response)
+                        if (response.status === 201) {
+                            successfulApiCall = true
+                            resolve()
+                        }
+                        else {
+                            successfulApiCall = false
+                            reject()
+                        }
+                    })
+                    .catch(function () {
+                        successfulApiCall = false
+                        reject()
+                    })
+                })
             }
         },
         computed: {
