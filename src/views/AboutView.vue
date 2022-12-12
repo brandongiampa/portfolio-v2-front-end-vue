@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-5" @click="openLinkIfStrong">
+  <div class="container py-5 about-page" @click="openLinkIfStrong">
     <h1 class="underlined mb-5">About Brandon</h1>
     <p>
       Greetings and salutations! My name is Brandon and I am a <strong>web developer</strong>/<strong>software engineer</strong>.
