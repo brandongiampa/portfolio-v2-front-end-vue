@@ -64,7 +64,7 @@
       Unfortunately, my time there was short, as I successfully finished the interview process for my current position soon thereafter.
     </p>
 
-    <h3>Why You Should Hire Me</h3>
+    <h2>Why You Should Hire Me/Other Facts</h2>
     <p>
       Most people around me would tell you I am very good at what I do. 
       When I did the tech interview for my internship last year, the interviewer said I probably knew more than some of the developers.
@@ -84,7 +84,7 @@
       Overall, if you hire me now, you're getting someone who will be working towards being a senior dev as of day one.
     </p>
 
-    <h2>My Previous Career</h2>
+    <h3>My Previous Career</h3>
     <p>
       I also have more than ten years of experience as an <strong>ESL teacher</strong>. Seven years of that I spent in <strong>South Korea</strong>.
       After that, I worked freelance with students from all over the globe, mostly in the auto industry when I was in Detroit, and mostly in tech
@@ -96,7 +96,7 @@
       have the skills.
     </p>
 
-    <h2>Education</h2>
+    <h3>Education</h3>
     <p>
       It seems like a lifetime ago that I earned a bachelor degree from the <strong>University of Michigan, Ann Arbor</strong>. I majored in <strong>German Studies</strong> and <strgon>Philosophy</strgon>, 
       and even studied in <strong>Germany</strong> for a year. 
@@ -111,8 +111,12 @@
 
     <h2>Signing Off</h2>
     <p>
+      Thank you for taking the time to check out my portfolio. I've worked hard on it and I hope I've succeeded in demonstrating my abilities,
+      despite how shabby some of the code may have been on my earlier works.
+    </p>
+    <p>
       At this point, if you have any more questions, feel free to contact me at <a href="me@brandongiampa.com">me@brandongiampa.com</a>.
-      If you don't have any questions, do it anyway. I mean, you've already read this far!
+      If you don't have any questions, drop me a line it anyway. I mean, you've already read this far!
     </p>
 
   </div>
