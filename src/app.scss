@@ -136,5 +136,24 @@ p {
 button.btn-primary {
     color: $white !important;
 }
+progress {
+    border: none;
+    color: $primary;
+    transition-duration: .5s;
+}
+progress::-moz-progress-bar {
+    background: $primary;
+    transition-duration: .5s;
+}
+
+progress::-webkit-progress-value {
+    background: $primary;
+    transition-duration: .5s;
+}
+
+progress::-webkit-progress-bar {
+    background: $primary;
+    transition-duration: .5s;
+}
 
 @import "bootstrap";
