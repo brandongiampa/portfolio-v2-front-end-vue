@@ -30,5 +30,6 @@
         align-items: center;
         justify-content: center;
         background-color: black;
+        z-index: 100000;
     }
 </style>
