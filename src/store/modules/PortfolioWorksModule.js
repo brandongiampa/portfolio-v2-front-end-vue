@@ -82,14 +82,12 @@ const portfolioWorksModule = {
             }
             return new Promise((resolve) => {
                 const API_URL = this.getters.API_URL
-                console.log(API_URL)
                 axios.request( {
                     method: 'GET',
                     url: `${API_URL}/works`
                 })
                 .then((response) => {
                     commit('setWorks', response.data.reverse())
-                    console.log(this.getters.works)
                     resolve()
                 })
             })
