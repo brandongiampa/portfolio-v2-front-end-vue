@@ -1,11 +1,11 @@
 <template>
-    <div id="carouselExampleIndicators" class="carousel slide w-100 h-100 py-5" data-ride="carousel" data-bs-ride="carousel">
+    <div id="testimonialCarousel" class="carousel slide w-100 h-100 py-5" data-ride="carousel" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" key="carousel-indicator-1" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" key="carousel-indicator-1" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button 
                 v-for="n in testimonials.length - 1" 
                 type="button" 
-                data-bs-target="#carouselExampleIndicators" 
+                data-bs-target="#testimonialCarousel" 
                 :data-bs-slide-to="n" 
                 :aria-label="'Slide ' + (n + 1)"
                 :key="'carousel-indicator-' + (n + 1)">
@@ -39,11 +39,11 @@
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
