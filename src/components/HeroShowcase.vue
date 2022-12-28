@@ -8,10 +8,27 @@
             <div class="row">
                 <div class="col-12 col-lg-6 position-relative d-flex align-items-center justify-content-center py-5 px-md-5 bg-black-opaque">
                     <div id="hero-text" class="position-relative text-light py-4">
-                        <span class="badge bg-primary px-2 py-1 text-light"><strong>Orange County | Los Angeles</strong></span>
-                        <h1 class="position-relative mt-2 mb-5 underlined">Brandon Giampa</h1>
-                        <h2>Full Stack Web Developer</h2>
-                        <router-link class="btn btn-primary btn-lg border-light border-1 rounded-0 bold text-light mt-4" to="/portfolio">View Portfolio</router-link>
+                        <span 
+                            class="badge bg-primary px-2 py-1 text-light"
+                            ref="badge"
+                        >
+                            <strong>Orange County | Los Angeles</strong>
+                        </span>
+                        <underlined-h1 ref="h1" title="Brandon Giampa" />
+                        <h2>
+                            <span 
+                                v-for="word in jobTitleSplit" 
+                                class="word"
+                                :key="'h2-word-span-' + word"  
+                            >
+                                {{ word }}
+                            </span>
+                        </h2>
+                        <router-link 
+                            class="btn btn-primary btn-lg border-light border-1 rounded-0 bold text-light mt-4 cta" 
+                            to="/portfolio">
+                            View Portfolio
+                        </router-link>
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 position-relative bg-black-opaque d-none d-md-flex justify-content-center align-items-center">
@@ -24,9 +41,29 @@
 
 <script>
     import TestimonialCarousel from './TestimonialCarousel.vue'
+    import UnderlinedH1 from './reusable/UnderlinedH1.vue'
+
     export default {
         components: {
-            TestimonialCarousel
+            TestimonialCarousel, UnderlinedH1
+        },
+        data() {
+            return {
+                animationsComplete: false,
+                jobTitle: "Full Stack Web Developer"
+            }
+        },
+        computed: {
+            jobTitleSplit: function() {
+                const jobTitleArr = this.jobTitle.split(' ')
+                for (let i = 0; i < jobTitleArr.length - 1; i++) {
+                    jobTitleArr[i] += ' '
+                }
+                return jobTitleArr
+            }
+        },
+        mounted() {
+            console.log(this.jobTitleSplit)
         }
     }
 </script>
@@ -34,6 +71,7 @@
 <style lang="scss">
     #hero-image {
         height: 640px;
+        opacity: 0;
         @media (max-width: 991px) {
             height: 100%;
             width: 100%;
@@ -52,6 +90,9 @@
             }
             h2 {
                 color: #ddd !important;
+                & > .word {
+                    opacity: 0
+                }
             }
         }
         &::before {
@@ -64,5 +105,13 @@
             left:0 ;
             top: 0;
         }
+    }
+    .name-letter-span {
+        transform: translate(-10px, 40px);
+        opacity: 0;
+    }
+    .cta {
+        transform: translateX(-100px);
+        opacity: 0;
     }
 </style>

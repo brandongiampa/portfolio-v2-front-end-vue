@@ -107,7 +107,16 @@ h1 {
     font-family: $font-family-serif;
     &.underlined {
         position: relative;
-        &::after {
+        & > .underline {
+            // width: 25px;
+            width: 0px;
+            height: 2px;
+            left: 0;
+            bottom: -29px;
+            background-color: $orange-accent;
+            position: absolute;
+        }
+        &.after::after {
             content: "";
             width: 25px;
             height: 2px;
@@ -142,7 +151,7 @@ progress {
     transition-duration: .5s;
 }
 progress::-moz-progress-bar {
-    background: $primary;
+    background: $white;
     transition-duration: .5s;
 }
 
@@ -152,8 +161,12 @@ progress::-webkit-progress-value {
 }
 
 progress::-webkit-progress-bar {
-    background: $primary;
+    background: $white;
     transition-duration: .5s;
+}
+
+.home > section, .content {
+    opacity: 0;
 }
 
 @import "bootstrap";

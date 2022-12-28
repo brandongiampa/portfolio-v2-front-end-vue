@@ -1,7 +1,7 @@
 <template>
     <section class="p-5">
         <div class="container">
-            <h1 class="underlined mb-5">About</h1>
+            <h1 class="underlined after mb-5">About</h1>
             <p>
                 {{ text }}
                 <router-link class="text-primary" to="/about">

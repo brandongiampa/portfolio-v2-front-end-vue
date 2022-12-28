@@ -1,8 +1,13 @@
 <template>
     <section class="p-5">
         <div class="container">
-            <h1 class="underlined mb-5">Testimonials</h1>
-            <div class="py-3" v-for="(testimonial, index) of testimonials" :key="'homepage-testimonial-'+(index+1)">
+            <h1 class="underlined after mb-5">Testimonials</h1>
+            <div 
+                class="py-3 testimonial" 
+                v-for="(testimonial, index) of testimonials" 
+                :key="'homepage-testimonial-'+(index+1)"
+                :id="'testimonial-'+(index+1)"
+            >
                 <p style="color: #343a40;" class="mb-1 testimonial-meta"><b>{{testimonial.author}}</b> from <a :href="testimonial.companyUrl">{{testimonial.company}}</a> says:</p>
                 <p class="mt-0 text-black testimonial-text">{{testimonial.text}}</p>
             </div>
@@ -42,6 +47,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .testimonial {
+        opacity: 0;
+    }
     .testimonial-meta {
         font-size: 1.1em !important;
     }

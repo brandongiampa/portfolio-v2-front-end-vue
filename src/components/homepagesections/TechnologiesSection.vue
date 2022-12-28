@@ -1,7 +1,7 @@
 <template>
     <section class="p-5">
         <div class="container">
-            <h1 class="underlined mb-5">Technologies</h1>
+            <h1 class="underlined after mb-5">Technologies</h1>
             <br/>
             <div class="pt-4" id="technologies-bg">
                 <div class="row m-0">
@@ -47,10 +47,14 @@ export default {
                     name: 'WordPress',
                     imgUrl: 'https://imgur.com/hy2bfkZ.png'
                 },
-                {
-                    name: 'Vue',
-                    imgUrl: 'https://imgur.com/rq7uYft.png'
-                }
+                /**
+                 * Vue img is large and is likely what is causing a jump when scrolling down homepage
+                 * Must address this when resizing imgs, maybe set max.
+                 */
+                // {
+                //     name: 'Vue',
+                //     imgUrl: 'https://imgur.com/rq7uYft.png'
+                // }
             ]
         }
     },
@@ -69,6 +73,8 @@ export default {
         background-color: #e9ecef;
     }
     img {
+        transform: scale(0);
+        opacity: 0;
         height: 120px;
         @media (max-width: 575.99px) {
             height: 65px;

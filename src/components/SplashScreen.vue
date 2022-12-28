@@ -31,5 +31,8 @@
         justify-content: center;
         background-color: black;
         z-index: 100000;
+        & > progress {
+            width: 400px;
+        }
     }
 </style>

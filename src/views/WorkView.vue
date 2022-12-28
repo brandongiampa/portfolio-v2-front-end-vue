@@ -1,7 +1,7 @@
 <template>
     <div class="container pt-5">
-        <h1 class="underlined mb-5">Works</h1>
-        <div class="pt-4" v-if="work.name && work.name !== ''">
+        <underlined-h1 :title="'Works'" ref="h1" />
+        <div class="pt-4 content" v-if="work.name && work.name !== ''" ref="content">
             <div class="row gx-5">
                 <div class="col-12 col-lg-6 mb-4 mb-lg-2">
                     <img :src="work.img_url" />
@@ -31,11 +31,11 @@
                 </div>
             </div>
         </div>
-        <div class="pt-4" v-if="!work.name || work.name === ''">
+        <div class="pt-4 content" v-if="!work.name || work.name === ''">
             <i>Error 404: No work exists with that name.</i>
         </div>
     </div>
-    <div class="container-fluid mt-5 features-and-technologies">
+    <div class="container-fluid mt-5 content features-and-technologies">
         <div class="row" v-if="work.name && work.name !== ''">
             <div class="col-12 col-md-6 d-flex flex-column align-items-center justify-content-start px-5 py-5 features">
                 <div>
@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div class="col-12 py-5 text-center back-to-portfolio">
+    <div class="col-12 py-5 text-center content back-to-portfolio">
         <router-link class="mt-2" to="/portfolio">
             <font-awesome-icon icon="fa-solid fa-chevron-left" /> Back to Portfolio
         </router-link>
@@ -67,6 +67,9 @@
 </template>
 
 <script> 
+    import UnderlinedH1 from '../components/reusable/UnderlinedH1.vue'
+    import { animateH1Letters, animateH1Underline, animateContent } from '../js-includes/dom-animations.js'
+
     export default {
         computed: {
             work() {
@@ -107,8 +110,37 @@
                 return this.work.description.split(/<p\/?>/)
             }
         },
+        data() {
+            return {
+                animationsComplete: false
+            }
+        },
         created() {
             this.$store.dispatch('clearSearchQuery')
+        },
+        mounted() {
+            if (!this.animationsComplete) this.animate()
+        },
+        updated() {
+            if (!this.animationsComplete) this.animate()
+        },
+        unmounted() {
+            this.animationsComplete = false
+        },
+        methods: {
+            async animate() {
+                if (this.$refs.h1) {
+                    await animateH1Letters()
+                    await animateH1Underline()
+                }
+                if (this.$refs.content) {
+                    await animateContent()
+                }
+                this.animationsComplete = true
+            }
+        },
+        components: {
+            UnderlinedH1
         }
     }
 </script>

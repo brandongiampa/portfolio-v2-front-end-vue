@@ -1,6 +1,6 @@
 <template>
   <navigation-bar />
-  <router-view/>
+  <router-view :is-loading="isLoading" />
   <site-footer></site-footer>
   <testimonial-modal />
   <Transition name="fade">
@@ -14,6 +14,22 @@
   import SplashScreen from './components/SplashScreen.vue'
   import TestimonialModal from './components/modals/TestimonialModal.vue'
   export default {
+    methods: {
+      fillProgressBar(to) {
+        const incrementTime = 10
+        const diff = to - this.progressValue
+        const promiseTime = incrementTime * diff
+        const interval = setInterval(()=> {
+          if (this.progressValue < to) this.progressValue++
+        }, incrementTime)
+        return new Promise((resolve)=> {
+          setTimeout(()=> {
+            clearInterval(interval)
+            resolve()
+          }, promiseTime)
+        })
+      }
+    },
     components: {
       NavigationBar,
       SiteFooter,
@@ -22,16 +38,16 @@
     },
     async created() {
       await this.$store.dispatch('setWorks', this.$store.getters.works)
-      this.progressValue = 50
+      await this.fillProgressBar(50)
       await this.$store.dispatch('setTestimonials')
-      this.progressValue = 100
-      //do something to unhide UI
+      await this.fillProgressBar(100)
+      this.$store.dispatch('setApiDoneLoading', true)
       this.isLoading = false
     },
     data() {
       return {
         progressValue: 0,
-        isLoading: true
+        isLoading: true,
       }
     }
   }
@@ -40,6 +56,10 @@
 <style lang="scss">
   section:nth-child(even) {
     background-color: #f8f9fa;
+  }
+  .badge {
+    opacity: 0;
+    scale: 0;
   }
   @mixin animate($animation,$duration,$method,$times){
         animation: $animation $duration $method $times;

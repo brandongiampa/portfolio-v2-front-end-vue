@@ -1,18 +1,29 @@
 <template>
     <div class="container py-5">
-        <h1 class="underlined mb-5">Portfolio</h1>
-        <portfolio-search />
-        <div class="pt-4">
-            <p class="mb-5" v-if="worksToShow.length"><i>{{showingString}}</i></p>
-            <p class="mb-5 pb-5" v-if="!worksToShow.length"><i>{{showingString}}</i></p>
-            <p class="mb-5 pb-5" v-if="!worksToShow.length"><i>Your query did not heed any results.</i></p>
-            <div class="row gx-5">
-                <div v-for="(work, index) of worksToShow" class="col-12 col-md-6 pb-5" :key="`work-card-div-${index}`">
-                    <work-card :work="work" :index="(index-1)" />
+        <underlined-h1 :title="'Portfolio'" ref="h1" />
+        <div class="content" ref="content">
+            <portfolio-search />
+            <div class="pt-4">
+                <p class="mb-5" v-if="worksToShow.length"><i>{{showingString}}</i></p>
+                <p class="mb-5 pb-5" v-if="!worksToShow.length"><i>{{showingString}}</i></p>
+                <p class="mb-5 pb-5" v-if="!worksToShow.length"><i>Your query did not heed any results.</i></p>
+                <div class="row gx-5 works-row">
+                    <div 
+                        v-for="(work, index) of worksToShow" 
+                        :class="index % 2 === 0 ? leftClasses : rightClasses" 
+                        :key="`work-card-div-${index}`"
+                        :id="'work-card-' + (index+1).toString()"
+                        ref="worksSection">
+                        <work-card :work="work" :index="(index-1)" />
+                    </div>
                 </div>
             </div>
+            <portfolio-paginator 
+                :current-index="currentIndex" 
+                :number-of-pages="numberOfPages" 
+                @set-current-index="setCurrentIndex" />
+
         </div>
-        <portfolio-paginator :current-index="currentIndex" :number-of-pages="numberOfPages" @set-current-index="setCurrentIndex" />
     </div>
 </template>
 
@@ -20,6 +31,9 @@
     const WORKS_PER_PAGE = 8
     import PortfolioPaginator from '../components/portfolioviewcomponents/PortfolioPaginator.vue'
     import PortfolioSearch from '../components/portfolioviewcomponents/PortfolioSearch.vue'
+    import UnderlinedH1 from '../components/reusable/UnderlinedH1.vue'
+    import { animateH1Letters, animateH1Underline, animateContent, animateWorkCard } from '../js-includes/dom-animations.js'
+
     export default {
         computed: {
             inputtedName() {
@@ -92,20 +106,67 @@
                     return output + `works using "${this.selectedTechnology}."`
                 }
                 return null //Added this b/c of getting ESLint error, but the above clauses should have covered every case???
+             },
+             numberOfWorks() {
+                return this.worksToShow.length
+             },
+             leftClasses() {
+                return this.colClasses + 'left work'
+             },
+             rightClasses() {
+                return this.colClasses + 'right work'
              }
         },
         methods: {
             setCurrentIndex: function(index) {
                 this.currentIndex = index
+            },
+            async animate() {
+                if (this.$refs.h1) {
+                    await animateH1Letters()
+                    await animateH1Underline()
+                }
+                if (this.$refs.content) {
+                    await animateContent()
+                }
+                if (this.numberOfWorks > 0 && this.$refs.worksSection) {
+                    for (let i = 1; i <= this.numberOfWorks; i++) {
+                        animateWorkCard(`#work-card-${i}`)
+                    }
+                }
+                this.animationsComplete = true
             }
         },
         data() {
             return {
-                currentIndex: 1
+                currentIndex: 1,
+                animationsComplete: false,
+                colClasses: 'col-12 col-md-6 pb-5 work-'
             }
         },
         components: {
-            PortfolioPaginator, PortfolioSearch
-        }
+            PortfolioPaginator, PortfolioSearch, UnderlinedH1
+        },
+        mounted() {
+            if (!this.animationsComplete) this.animate()
+        },
+        async updated() {
+            if (!this.animationsComplete) this.animate()
+        },
+        unmounted() {
+            this.animationsComplete = false
+        },
     }
 </script>
+
+<style lang="scss">
+    .work {
+        opacity: 0;
+    }
+    .work-left {
+        transform: translateX(-100%);
+    }
+    .work-right {
+        transform: translateX(100%);
+    }
+</style>

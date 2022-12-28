@@ -75,8 +75,8 @@
                     }
                 ],
                 activeTestimonialIndex: 0,
-                activeClasses: 'carousel-item h-100 testimonial active',
-                inactiveClasses: 'carousel-item h-100 testimonial'
+                activeClasses: 'carousel-item h-100 active',
+                inactiveClasses: 'carousel-item h-100'
             }
         },
         methods: {
@@ -93,6 +93,10 @@
 </script>
 
 <style lang="scss" scoped>
+    #testimonialCarousel {
+        opacity: 0;
+        transform: translateX(100px);
+    }
     .carousel-indicators {
         top: 320px;
     }

@@ -88,6 +88,7 @@ const portfolioWorksModule = {
                 })
                 .then((response) => {
                     commit('setWorks', response.data.reverse())
+                    this.dispatch('setApiDoneLoading', true)
                     resolve()
                 })
             })
