@@ -17,7 +17,8 @@ const portfolioWorksModule = {
         works: [],
         inputtedName: null,
         selectedFeature: null,
-        selectedTechnology: null
+        selectedTechnology: null,
+        worksLoaded: false
     },
     getters: {
         works(state) {
@@ -37,6 +38,9 @@ const portfolioWorksModule = {
         },
         hasSearchQuery(state) {
             return (state.inputtedName && state.selectedFeature && state.selectedTechnology) ? false : true
+        },
+        worksLoaded(state) {
+            return state.worksLoaded
         }
     },
     mutations: {
@@ -54,6 +58,9 @@ const portfolioWorksModule = {
         },
         setSelectedTechnology(state, technology) {
             state.selectedTechnology = technology
+        },
+        setWorksLoaded(state, bool) {
+            state.worksLoaded = bool
         }
     },
     actions: {
@@ -82,15 +89,18 @@ const portfolioWorksModule = {
             }
             return new Promise((resolve) => {
                 const API_URL = this.getters.API_URL
-                axios.request( {
-                    method: 'GET',
-                    url: `${API_URL}/works`
-                })
-                .then((response) => {
-                    commit('setWorks', response.data.reverse())
-                    this.dispatch('setApiDoneLoading', true)
-                    resolve()
-                })
+                if (!this.getters.worksLoaded) {
+                    axios.request( {
+                        method: 'GET',
+                        url: `${API_URL}/works`
+                    })
+                    .then((response) => {
+                        commit('setWorks', response.data.reverse())
+                        commit('setWorksLoaded', true)
+                        resolve()
+                    })
+                }
+                else resolve()
             })
         }
     }

@@ -31,8 +31,13 @@
                 </div>
             </div>
         </div>
-        <div class="pt-4 content" v-if="!work.name || work.name === ''">
+        <div class="pt-4" v-if="!work.name || work.name === ''">
             <i>Error 404: No work exists with that name.</i>
+            <div class="col-12 mt-5 py-5 text-center back-to-portfolio">
+                <router-link class="mt-2" to="/portfolio">
+                    <font-awesome-icon icon="fa-solid fa-chevron-left" /> Back to Portfolio
+                </router-link>
+            </div>
         </div>
     </div>
     <div class="container-fluid mt-5 content features-and-technologies">
