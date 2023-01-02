@@ -121,7 +121,7 @@
         }
     }
     .name-letter-span {
-        transform: translate(-10px, 40px);
+        // transform: translate(-10px, 40px);
         opacity: 0;
     }
     .cta {

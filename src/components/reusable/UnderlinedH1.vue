@@ -4,6 +4,7 @@
             v-for="(letter, index) of title" 
             :key="`h1-span-${index}`"
             :class="buildLetterSpanClasses(letter)"
+            style="transform: translate(-10px, 40px);"
         >
             {{letter}}
         </span>

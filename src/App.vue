@@ -64,10 +64,4 @@
     .exit-button {
         margin-top: -6px;
     }
-    // .fade-leave-active {
-    //     transition: opacity 1.2s ease !important;
-    // }
-    // .fade-leave-to {
-    //     opacity: 0 !important;
-    // }
 </style>
