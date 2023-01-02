@@ -41,8 +41,8 @@ function animateH1Letters(numberOfLetters) {
         duration: H1_LETTER_STAGGER * numberOfLetters,
         ease: 'elastic',
         stagger: H1_LETTER_STAGGER,
-        x: 0,
-        y: 0,
+        //x: 0,
+        //y: 0,
         opacity: 1
     })
 }
