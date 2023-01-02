@@ -1,8 +1,8 @@
 <template>
     <div class="card" :key="`work-card-${index}`">
-        <a :href="work.site_url">
+        <router-link class="nav-link" :to="`/works/${work.name}`">
             <img :src="work.img_url" class="card-img-top" :alt="work.title" />
-        </a>
+        </router-link>
         
         <div class="card-body">
             <h3 class="card-name text-center">{{ work.name }}</h3>
@@ -18,9 +18,9 @@
                         </a>
                     </div>
                     <div class="col-4 text-center icon">
-                        <a style="color: #172125;" :href="`/works/${work.name}`">
+                        <router-link class="nav-link" :to="`/works/${work.name}`">
                             <font-awesome-icon icon="fa-solid fa-circle-info" />
-                        </a>
+                        </router-link>
                     </div>
                     <div class="col-4 text-center icon">
                         <a style="color: #172125;" :href="work.github_url">
