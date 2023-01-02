@@ -109,11 +109,6 @@ export default {
       numberOfFullTestimonials: 2 //TODO: Change this after curling testimonials from API in $store 
     }
   },
-  computed: {
-    apiDoneLoading: function() {
-      return this.$store.getters.apiDoneLoading
-    }
-  },
   props: {
     isLoading: {
       type: Boolean
