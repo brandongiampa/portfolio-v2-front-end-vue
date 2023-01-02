@@ -18,8 +18,8 @@
                 <div class="navbar-nav">
                     <router-link class="nav-link mt-2" to="/portfolio">Portfolio</router-link>
                     <router-link class="nav-link mt-2" to="/about">About</router-link>
-                    <a class="nav-link brands" href="#"><font-awesome-icon icon="fa-brands fa-github" /></a>
-                    <a class="nav-link brands" href="#"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
+                    <a class="nav-link brands" href="https://github.com/brandongiampa"><font-awesome-icon icon="fa-brands fa-github" /></a>
+                    <a class="nav-link brands" href="https://www.linkedin.com/in/brandon-giampa-51b05211a/"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
                 </div>
             </div>
           </div>
