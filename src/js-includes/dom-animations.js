@@ -3,8 +3,7 @@ import gsap from 'gsap'
 const SPLASHSCREEN_DURATION = .4
 const HERO_IMAGE_DURATION = .5
 const HERO_IMAGE_DELAY = 0.1
-const H1_DURATION = 1.5
-const H1_LETTER_STAGGER = 0.12
+const H1_LETTER_STAGGER = 0.2
 const H1_UNDERLINE_DURATION = 0.2
 const BADGE_DURATION = 0.5
 const CONTENT_DURATION = 0.5
@@ -37,12 +36,12 @@ function animateHeroImage() {
     })
 }
 
-function animateH1Letters() {
+function animateH1Letters(numberOfLetters) {
     return gsap.to(".name-letter-span", {
         x: 0,
         y: 0,
         opacity: 1,
-        duration: H1_DURATION,
+        duration: H1_LETTER_STAGGER * numberOfLetters,
         ease: 'elastic',
         stagger: H1_LETTER_STAGGER
     })

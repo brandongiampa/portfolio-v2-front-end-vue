@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <hero-showcase ref="hero"></hero-showcase>
+    <hero-showcase ref="hero" :title="title" />
     <about-section ref="aboutSection" />
     <works-section ref="worksSection" @setNumberOfWorks="setNumberOfWorks" />
     <technologies-section ref="technologiesSection" />
@@ -72,7 +72,7 @@ export default {
     async animate() {
         if (this.$refs.hero) {
             await animateHeroImage()
-            await animateH1Letters()
+            await animateH1Letters(this.title.length)
             await animateH1Underline()
             await animateBadge()
             await animateH2()
@@ -103,6 +103,7 @@ export default {
   },
   data() {
     return {
+      title: "Brandon Giampa",
       numberOfWorks: 0,
       numberOfFullTestimonials: 2 //TODO: Change this after curling testimonials from API in $store 
     }

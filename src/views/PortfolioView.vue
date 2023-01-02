@@ -1,6 +1,6 @@
 <template>
     <div class="container py-5">
-        <underlined-h1 :title="'Portfolio'" ref="h1" />
+        <underlined-h1 :title="title" ref="h1" />
         <div class="content" ref="content">
             <portfolio-search />
             <div class="pt-4">
@@ -128,7 +128,7 @@
             },
             async animate() {
                 if (this.$refs.h1) {
-                    await animateH1Letters()
+                    await animateH1Letters(this.title.length)
                     await animateH1Underline()
                 }
                 if (this.$refs.content) {
@@ -139,6 +139,7 @@
         },
         data() {
             return {
+                title: "Portfolio",
                 currentIndex: 1,
                 animationsComplete: false,
                 colClasses: 'col-12 col-md-6 pb-5 work-'

@@ -1,6 +1,6 @@
 <template>
   <div class="container py-5 about-page" @click="openLinkIfStrong">
-    <underlined-h1 :title="'About'" ref="h1" />
+    <underlined-h1 :title="title" ref="h1" />
     <div class="content" ref="content">
       <p>
         Greetings and salutations! My name is Brandon and I am a <strong>web developer</strong>/<strong>software engineer</strong>.
@@ -133,7 +133,7 @@
       },
       async animate() {
         if (this.$refs.h1) {
-          await animateH1Letters()
+          await animateH1Letters(this.title.length)
           await animateH1Underline()
         }
         if (this.$refs.content) {
@@ -184,6 +184,7 @@
     },
     data() {
       return {
+        title: "About",
         animationsComplete: false
       }
     }

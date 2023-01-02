@@ -1,6 +1,6 @@
 <template>
     <div class="container pt-5">
-        <underlined-h1 :title="'Works'" ref="h1" />
+        <underlined-h1 :title="title" ref="h1" />
         <div class="pt-4 content" v-if="work.name && work.name !== ''" ref="content">
             <div class="row gx-5">
                 <div class="col-12 col-lg-6 mb-4 mb-lg-2">
@@ -117,6 +117,7 @@
         },
         data() {
             return {
+                title: "Works",
                 animationsComplete: false
             }
         },
@@ -152,7 +153,7 @@
         methods: {
             async animate() {
                 if (this.$refs.h1) {
-                    await animateH1Letters()
+                    await animateH1Letters(this.title.length)
                     await animateH1Underline()
                 }
                 if (this.$refs.content) {

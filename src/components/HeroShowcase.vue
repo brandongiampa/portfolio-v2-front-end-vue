@@ -14,7 +14,7 @@
                         >
                             <strong>Orange County | Los Angeles</strong>
                         </span>
-                        <underlined-h1 ref="h1" title="Brandon Giampa" />
+                        <underlined-h1 ref="h1" :title="title" />
                         <h2>
                             <span 
                                 v-for="word in jobTitleSplit" 
@@ -64,6 +64,12 @@
         },
         mounted() {
             console.log(this.jobTitleSplit)
+        },
+        props: {
+            title: {
+                required: true,
+                type: String
+            }
         }
     }
 </script>
