@@ -6,7 +6,7 @@
             <div class="pt-4" id="technologies-bg">
                 <div class="row m-0">
                     <div 
-                        class="col-3 d-flex align-items-center justify-content-center p-5" 
+                        class="col-6 col-md-3 d-flex align-items-center justify-content-center p-4 p-md-5" 
                         v-for="(technology, index) of technologies" :key="'technology-link-'+(index+1)"
                     >
                         <router-link to="/portfolio" @click="setSelectedTechnology(technology.name)">
