@@ -25,7 +25,12 @@
                             </span>
                         </h2>
                         <router-link 
-                            class="btn btn-primary btn-lg border-light border-1 rounded-0 bold text-light mt-4 cta" 
+                            class="d-none d-sm-inline-block btn btn-primary btn-lg border-light border-1 rounded-0 bold text-light mt-4 cta" 
+                            to="/portfolio">
+                            View Portfolio
+                        </router-link>
+                        <router-link 
+                            class="d-inline-block d-sm-none btn btn-primary border-light border-1 rounded-0 bold text-light mt-4 cta" 
                             to="/portfolio">
                             View Portfolio
                         </router-link>
@@ -90,11 +95,17 @@
                 @media(max-width: 767px) {
                     font-size: 2.8rem !important;
                 }
+                @media(max-width: 575px) {
+                    font-size: 2.3rem !important;
+                }
             }
             h2 {
                 color: #ddd !important;
                 & > .word {
                     opacity: 0
+                }
+                @media(max-width: 575px) {
+                    font-size: 1.5rem !important;
                 }
             }
         }
