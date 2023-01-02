@@ -126,6 +126,8 @@
 <script>
   import UnderlinedH1 from '../components/reusable/UnderlinedH1.vue'
   import { fadeOutSplashscreen, animateH1Letters, animateH1Underline, animateContent } from '../js-includes/dom-animations.js'
+  import closeNavbarIfOpen from '@/js-includes/close-navbar-if-open'
+
   export default {
     methods: {
       openLinkIfStrong(e) {
@@ -175,6 +177,7 @@
       if (!this.animationsComplete) this.animate()
     },
     unmounted() {
+      closeNavbarIfOpen()
       this.animationsComplete = false
     },
     computed: {

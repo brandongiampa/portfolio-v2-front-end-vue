@@ -28,7 +28,7 @@ import {
   animateHomePageTechnologiesBackgroundAndImgs,
   animateTestimonial
 } from '../js-includes/dom-animations.js'
-
+import closeNavbarIfOpen from '../js-includes/close-navbar-if-open.js'
 
 export default {
   name: 'HomeView',
@@ -66,6 +66,7 @@ export default {
     if (!this.animationsComplete) this.animate()
   },
   unmounted() {
+    closeNavbarIfOpen()
     this.animationsComplete = false
   },
   methods: {

@@ -21,8 +21,8 @@
             <portfolio-paginator 
                 :current-index="currentIndex" 
                 :number-of-pages="numberOfPages" 
-                @set-current-index="setCurrentIndex" />
-
+                @set-current-index="setCurrentIndex" 
+            />
         </div>
     </div>
 </template>
@@ -38,6 +38,7 @@
         animateH1Underline, 
         animateContent
     } from '../js-includes/dom-animations.js'
+    import closeNavbarIfOpen from '../js-includes/close-navbar-if-open.js'
 
     export default {
         computed: {
@@ -176,6 +177,7 @@
             if (!this.animationsComplete) this.animate()
         },
         unmounted() {
+            closeNavbarIfOpen()
             this.animationsComplete = false
         },
     }
