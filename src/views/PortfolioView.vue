@@ -151,7 +151,6 @@
             PortfolioPaginator, PortfolioSearch, UnderlinedH1
         },
         async created() {
-            this.$store.dispatch('clearSearchQuery')
             if (!this.$store.getters.worksLoaded || !this.$store.getters.testimonialsLoaded) {
                 this.$emit('doneLoading', false)
                 //TODO: Create Error Page and nest this in try/catch 
