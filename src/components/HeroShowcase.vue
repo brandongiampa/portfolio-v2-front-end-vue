@@ -62,9 +62,6 @@
                 return jobTitleArr
             }
         },
-        mounted() {
-            console.log(this.jobTitleSplit)
-        },
         props: {
             title: {
                 required: true,

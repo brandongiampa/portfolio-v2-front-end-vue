@@ -63,15 +63,6 @@ export default {
                     name: 'Git',
                     imgUrl: 'https://imgur.com/hdRarZd.jpg'
                 },
-                
-                /**
-                 * Vue img is large and is likely what is causing a jump when scrolling down homepage
-                 * Must address this when resizing imgs, maybe set max.
-                 */
-                // {
-                //     name: 'Vue',
-                //     imgUrl: 'https://imgur.com/rq7uYft.png'
-                // }
             ]
         }
     },

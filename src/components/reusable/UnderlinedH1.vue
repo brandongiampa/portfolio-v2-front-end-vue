@@ -24,9 +24,6 @@
                 const display = letter !== " " ? 'd-inline-block ' : ""
                 return display + 'name-letter-span'
             }
-        },
-        mounted() {
-            console.log("H1 mounted.")
         }
     }
 </script>
