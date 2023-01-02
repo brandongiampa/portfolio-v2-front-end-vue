@@ -33,16 +33,23 @@ const testimonialsModule = {
                 company: "Company Six",
                 text: "Loading testimonial six..."
             },
-        ]
+        ],
+        testimonialsLoaded: false
     },
     getters: {
         testimonials(state) {
             return state.testimonials
+        },
+        testimonialsLoaded(state) {
+            return state.testimonialsLoaded
         }
     },
     mutations: {
         setTestimonials(state, testimonialsArray) {
             state.testimonials = testimonialsArray
+        },
+        setTestimonialsLoaded(state, bool) {
+            state.testimonialsLoaded = bool
         }
     },
     actions: {
@@ -59,9 +66,13 @@ const testimonialsModule = {
                         if (testimonial.approved) arr.push(testimonial)
                     }
                     commit('setTestimonials', arr)
+                    commit('setTestimonialsLoaded', true)
                     resolve()
                 })
             })
+        },
+        setTestimonialsLoaded({commit}, bool) {
+            commit('setTestimonials', bool)
         }
     }
 }

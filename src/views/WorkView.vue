@@ -73,7 +73,7 @@
 
 <script> 
     import UnderlinedH1 from '../components/reusable/UnderlinedH1.vue'
-    import { animateH1Letters, animateH1Underline, animateContent } from '../js-includes/dom-animations.js'
+    import { fadeOutSplashscreen, animateH1Letters, animateH1Underline, animateContent } from '../js-includes/dom-animations.js'
 
     export default {
         computed: {
@@ -120,13 +120,30 @@
                 animationsComplete: false
             }
         },
-        created() {
+        async created() {
             this.$store.dispatch('clearSearchQuery')
+            if (!this.$store.getters.worksLoaded || !this.$store.getters.testimonialsLoaded) {
+                this.$emit('doneLoading', false)
+                //TODO: Create Error Page and nest this in try/catch 
+                if (!this.$store.getters.worksLoaded && !this.$store.getters.testimonialsLoaded) {
+                    const worksPromise = this.$store.dispatch('setWorks')
+                    const testimonialsPromise = this.$store.dispatch('setTestimonials')
+                    await Promise.all([worksPromise, testimonialsPromise])
+                }
+                else if (!this.$store.getters.worksLoaded) {
+                    await this.$store.dispatch('setWorks')
+                }
+                else if (!this.$store.getters.testimonialsLoaded) {
+                    await this.$store.dispatch('setTestimonials')
+                }
+                await fadeOutSplashscreen()
+                    this.$emit('doneLoading', true)
+            }
+            else {
+                this.$emit('doneLoading', true)
+            }
         },
         mounted() {
-            if (!this.animationsComplete) this.animate()
-        },
-        updated() {
             if (!this.animationsComplete) this.animate()
         },
         unmounted() {
@@ -146,7 +163,8 @@
         },
         components: {
             UnderlinedH1
-        }
+        },
+        emits: ['doneLoading']
     }
 </script>
 

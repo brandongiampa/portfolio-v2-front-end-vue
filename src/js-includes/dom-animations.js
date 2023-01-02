@@ -1,5 +1,6 @@
 import gsap from 'gsap'
 
+const SPLASHSCREEN_DURATION = .4
 const HERO_IMAGE_DURATION = .5
 const HERO_IMAGE_DELAY = 0.1
 const H1_DURATION = 1.5
@@ -19,6 +20,13 @@ const HOME_PAGE_TECHNOLOGIES_IMG_DURATION = 1
 const HOME_PAGE_TECHNOLOGIES_IMG_STAGGER = .2
 const TESTIMONIAL_DURATION = .7
 const TESTIMONIAL_STAGGER = .3
+
+function fadeOutSplashscreen() {
+    return gsap.to(".splashscreen", {
+        opacity: 0,
+        duration: SPLASHSCREEN_DURATION
+    })
+}
 
 function animateHeroImage() {
     return gsap.to("#hero-image", {
@@ -134,6 +142,7 @@ function animateTestimonial(id) {
 }
 
 export {
+    fadeOutSplashscreen,
     animateHeroImage,
     animateH1Letters,
     animateH1Underline,

@@ -1,11 +1,9 @@
 <template>
   <navigation-bar />
-  <router-view :is-loading="isLoading" />
+  <router-view @done-loading="setShowSplashscreen" />
   <site-footer></site-footer>
   <testimonial-modal />
-  <Transition name="fade">
-    <splash-screen v-if="isLoading" :progress-value="progressValue" />
-  </Transition>
+  <splash-screen v-if="showSplashscreen" />
 </template>
 
 <script>
@@ -15,19 +13,8 @@
   import TestimonialModal from './components/modals/TestimonialModal.vue'
   export default {
     methods: {
-      fillProgressBar(to) {
-        const incrementTime = 10
-        const diff = to - this.progressValue
-        const promiseTime = incrementTime * diff
-        const interval = setInterval(()=> {
-          if (this.progressValue < to) this.progressValue++
-        }, incrementTime)
-        return new Promise((resolve)=> {
-          setTimeout(()=> {
-            clearInterval(interval)
-            resolve()
-          }, promiseTime)
-        })
+      setShowSplashscreen: function(bool) {
+        this.showSplashscreen = !bool
       }
     },
     components: {
@@ -36,18 +23,9 @@
       TestimonialModal,
       SplashScreen
     },
-    async created() {
-      await this.$store.dispatch('setWorks', this.$store.getters.works)
-      await this.fillProgressBar(50)
-      await this.$store.dispatch('setTestimonials')
-      await this.fillProgressBar(100)
-      this.$store.dispatch('setApiDoneLoading', true)
-      this.isLoading = false
-    },
     data() {
       return {
-        progressValue: 0,
-        isLoading: true,
+        showSplashscreen: true
       }
     }
   }
@@ -86,10 +64,10 @@
     .exit-button {
         margin-top: -6px;
     }
-    .fade-leave-active {
-        transition: opacity 1.2s ease !important;
-    }
-    .fade-leave-to {
-        opacity: 0 !important;
-    }
+    // .fade-leave-active {
+    //     transition: opacity 1.2s ease !important;
+    // }
+    // .fade-leave-to {
+    //     opacity: 0 !important;
+    // }
 </style>

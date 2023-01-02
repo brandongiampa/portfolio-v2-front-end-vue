@@ -5,26 +5,12 @@ import testimonialsModule from './modules/TestimonialsModule.js'
 
 export default createStore({
   state: {
-    API_URL: 'https://portfoliov2api.brandongiampa.host/api',
-    apiDoneLoading: false,
+    API_URL: 'https://portfoliov2api.brandongiampa.host/api'
   },
   getters: {
     API_URL(state) {
       return state.API_URL
-    },
-    apiDoneLoading(state) {
-      return state.apiDoneLoading
-    },
-  },
-  mutations: {
-    setApiDoneLoading(state, bool) {
-      state.apiDoneLoading = bool
-    },
-  },
-  actions: {
-    setApiDoneLoading({commit}, bool) {
-      commit('setApiDoneLoading', bool)
-    },
+    }
   },
   modules: {
     aboutTextModule,

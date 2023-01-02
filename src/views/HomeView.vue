@@ -15,6 +15,7 @@ import WorksSection from '@/components/homepagesections/WorksSection.vue'
 import TechnologiesSection from '@/components/homepagesections/TechnologiesSection.vue'
 import TestimonialsSection from '@/components/homepagesections/TestimonialsSection.vue'
 import { 
+  fadeOutSplashscreen,
   animateHeroImage, 
   animateH1Letters, 
   animateH1Underline, 
@@ -38,12 +39,31 @@ export default {
     TechnologiesSection,
     TestimonialsSection
   },
-  mounted() {
+  async created() {
     this.$store.dispatch('clearSearchQuery')
-    if (!this.isLoading && !this.animationsComplete) this.animate()
+    if (!this.$store.getters.worksLoaded || !this.$store.getters.testimonialsLoaded) {
+      this.$emit('doneLoading', false)
+      //TODO: Create Error Page and nest this in try/catch 
+      if (!this.$store.getters.worksLoaded && !this.$store.getters.testimonialsLoaded) {
+        const worksPromise = this.$store.dispatch('setWorks')
+        const testimonialsPromise = this.$store.dispatch('setTestimonials')
+        await Promise.all([worksPromise, testimonialsPromise])
+      }
+      else if (!this.$store.getters.worksLoaded) {
+        await this.$store.dispatch('setWorks')
+      }
+      else if (!this.$store.getters.testimonialsLoaded) {
+        await this.$store.dispatch('setTestimonials')
+      }
+      await fadeOutSplashscreen()
+      this.$emit('doneLoading', true)
+    }
+    else {
+      this.$emit('doneLoading', true)
+    }
   },
-  updated() {
-    if (!this.isLoading && !this.animationsComplete) this.animate()
+  mounted() {
+    if (!this.animationsComplete) this.animate()
   },
   unmounted() {
     this.animationsComplete = false
@@ -96,6 +116,7 @@ export default {
     isLoading: {
       type: Boolean
     }
-  }
+  },
+  emits: ['doneLoading']
 }
 </script>

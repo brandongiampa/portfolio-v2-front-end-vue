@@ -32,7 +32,12 @@
     import PortfolioPaginator from '../components/portfolioviewcomponents/PortfolioPaginator.vue'
     import PortfolioSearch from '../components/portfolioviewcomponents/PortfolioSearch.vue'
     import UnderlinedH1 from '../components/reusable/UnderlinedH1.vue'
-    import { animateH1Letters, animateH1Underline, animateContent, animateWorkCard } from '../js-includes/dom-animations.js'
+    import { 
+        fadeOutSplashscreen,
+        animateH1Letters, 
+        animateH1Underline, 
+        animateContent
+    } from '../js-includes/dom-animations.js'
 
     export default {
         computed: {
@@ -129,11 +134,6 @@
                 if (this.$refs.content) {
                     await animateContent()
                 }
-                if (this.numberOfWorks > 0 && this.$refs.worksSection) {
-                    for (let i = 1; i <= this.numberOfWorks; i++) {
-                        animateWorkCard(`#work-card-${i}`)
-                    }
-                }
                 this.animationsComplete = true
             }
         },
@@ -144,13 +144,34 @@
                 colClasses: 'col-12 col-md-6 pb-5 work-'
             }
         },
+        emits: [ 'doneLoading' ],
         components: {
             PortfolioPaginator, PortfolioSearch, UnderlinedH1
         },
-        mounted() {
-            if (!this.animationsComplete) this.animate()
+        async created() {
+            this.$store.dispatch('clearSearchQuery')
+            if (!this.$store.getters.worksLoaded || !this.$store.getters.testimonialsLoaded) {
+                this.$emit('doneLoading', false)
+                //TODO: Create Error Page and nest this in try/catch 
+                if (!this.$store.getters.worksLoaded && !this.$store.getters.testimonialsLoaded) {
+                    const worksPromise = this.$store.dispatch('setWorks')
+                    const testimonialsPromise = this.$store.dispatch('setTestimonials')
+                    await Promise.all([worksPromise, testimonialsPromise])
+                }
+                else if (!this.$store.getters.worksLoaded) {
+                    await this.$store.dispatch('setWorks')
+                }
+                else if (!this.$store.getters.testimonialsLoaded) {
+                    await this.$store.dispatch('setTestimonials')
+                }
+                await fadeOutSplashscreen()
+                    this.$emit('doneLoading', true)
+            }
+            else {
+                this.$emit('doneLoading', true)
+            }
         },
-        async updated() {
+        mounted() {
             if (!this.animationsComplete) this.animate()
         },
         unmounted() {
@@ -158,15 +179,3 @@
         },
     }
 </script>
-
-<style lang="scss">
-    .work {
-        opacity: 0;
-    }
-    .work-left {
-        transform: translateX(-100%);
-    }
-    .work-right {
-        transform: translateX(100%);
-    }
-</style>

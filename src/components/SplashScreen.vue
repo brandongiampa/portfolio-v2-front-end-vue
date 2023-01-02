@@ -3,7 +3,12 @@
         <div>
             <code class="text-light loading"><i>Loading brandongiampa.com...</i></code>
             <br/>
-            <progress max="100" :value="progressValue"></progress>
+            <!-- <progress max="100" :value="progressValue"></progress> -->
+            <div class="d-flex justify-content-center mt-3">
+                <div class="spinner-border text-primary mx-auto" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -11,9 +16,9 @@
 <script>
     export default {
         props: {
-            progressValue: {
-                type: Number
-            }
+            // progressValue: {
+            //     type: Number
+            // }
         }
     }
 </script>
