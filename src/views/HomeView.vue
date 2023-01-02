@@ -73,7 +73,7 @@ export default {
     async animate() {
         if (this.$refs.hero) {
             await animateHeroImage()
-            await animateH1Letters(this.title.length)
+            await animateH1Letters()
             await animateH1Underline()
             await animateBadge()
             await animateH2()

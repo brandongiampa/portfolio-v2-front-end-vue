@@ -155,7 +155,7 @@
         methods: {
             async animate() {
                 if (this.$refs.h1) {
-                    await animateH1Letters(this.title.length)
+                    await animateH1Letters()
                     await animateH1Underline()
                 }
                 if (this.$refs.content) {

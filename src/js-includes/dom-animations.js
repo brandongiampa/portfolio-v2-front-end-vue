@@ -36,15 +36,11 @@ function animateHeroImage() {
     })
 }
 
-function animateH1Letters(numberOfLetters) {
-    console.log(numberOfLetters)
-    console.log(H1_LETTER_STAGGER * numberOfLetters)
+function animateH1Letters() {
     return gsap.to(".name-letter-span", {
         duration: H1_LETTER_STAGGER,// * numberOfLetters,
         ease: 'elastic',
         stagger: H1_LETTER_STAGGER,
-        //x: 0,
-        //y: 0,
         opacity: 1
     })
 }
