@@ -29,24 +29,41 @@ export default {
             technologies: [
                 {
                     name: 'HTML',
-                    imgUrl: 'https://imgur.com/hzgllqZ.png'
+                    imgUrl: 'https://imgur.com/c9No9lu.jpg'
                 },
                 {
                     name: 'CSS',
-                    imgUrl: 'https://imgur.com/tFctgth.png'
+                    imgUrl: 'https://imgur.com/i0FG3q6.jpg'
                 },
                 {
                     name: 'Javascript',
-                    imgUrl: 'https://imgur.com/MVGRrVh.png'
+                    imgUrl: 'https://imgur.com/iCY0vYC.jpg'
                 },
                 {
                     name: 'PHP',
-                    imgUrl: 'https://imgur.com/WQDVLq4.png'
+                    imgUrl: 'https://imgur.com/meIaloQ.jpg'
+                },
+                {
+                    name: 'mySQL',
+                    imgUrl: 'https://imgur.com/ttMRZIY.jpg'
+                },
+                {
+                    name: 'Vue',
+                    imgUrl: 'https://imgur.com/OhUmHlh.jpg'
                 },
                 {
                     name: 'WordPress',
-                    imgUrl: 'https://imgur.com/hy2bfkZ.png'
+                    imgUrl: 'https://imgur.com/Iy1qdHF.jpg'
                 },
+                {
+                    name: 'Bootstrap',
+                    imgUrl: 'https://imgur.com/kuG2BAE.jpg'
+                },
+                {
+                    name: 'Git',
+                    imgUrl: 'https://imgur.com/hdRarZd.jpg'
+                },
+                
                 /**
                  * Vue img is large and is likely what is causing a jump when scrolling down homepage
                  * Must address this when resizing imgs, maybe set max.
