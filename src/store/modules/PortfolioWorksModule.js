@@ -95,6 +95,12 @@ const portfolioWorksModule = {
                         url: `${API_URL}/works`
                     })
                     .then((response) => {
+                        /**
+                         * Get rid of spaces in hashtags.
+                         */
+                        for (let datum of response.data) {
+                            datum.hashtags = datum.hashtags.split(" ").join("")
+                        }
                         commit('setWorks', response.data.reverse())
                         commit('setWorksLoaded', true)
                         resolve()
