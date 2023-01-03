@@ -1,5 +1,5 @@
 <template>
-    <section class="p-5">
+    <section class="py-5 px-2 px-md-5">
         <div class="container">
             <h1 class="underlined after mb-5">About</h1>
             <p>
