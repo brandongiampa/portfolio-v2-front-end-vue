@@ -71,32 +71,32 @@ export default {
   },
   methods: {
     async animate() {
-        if (this.$refs.hero) {
-            await animateHeroImage()
-            await animateH1Letters()
-            await animateH1Underline()
-            await animateBadge()
-            await animateH2()
-            await animateCta()
-            await animateTestimonialCarousel()
+      if (this.numberOfWorks > 0 && this.$refs.worksSection) {
+        for (let i = 1; i <= this.numberOfWorks; i++) {
+          animateWorkCard(`#work-card-${i}`, i-1)
         }
-        if (this.$refs.aboutSection || this.$refs.worksSection || this.$refs.technologiesSection || this.$refs.testimonialsSection) {
-            await animateSections()
+      }
+      if (this.$refs.technologiesSection) {
+        animateHomePageTechnologiesBackgroundAndImgs()
+      }
+      if (this.$refs.testimonialsSection) {
+        for (let i = 1; i <= this.numberOfFullTestimonials; i++) {
+          animateTestimonial(`#testimonial-${i}`)
         }
-        if (this.numberOfWorks > 0 && this.$refs.worksSection) {
-          for (let i = 1; i <= this.numberOfWorks; i++) {
-            await animateWorkCard(`#work-card-${i}`, i-1)
-          }
-        }
-        if (this.$refs.technologiesSection) {
-          await animateHomePageTechnologiesBackgroundAndImgs()
-        }
-        if (this.$refs.testimonialsSection) {
-          for (let i = 1; i <= this.numberOfFullTestimonials; i++) {
-            await animateTestimonial(`#testimonial-${i}`)
-          }
-        }
-        this.animationsComplete = true
+      }
+      if (this.$refs.hero) {
+          await animateHeroImage()
+          await animateH1Letters()
+          await animateH1Underline()
+          await animateBadge()
+          await animateH2()
+          await animateCta()
+          await animateTestimonialCarousel()
+      }
+      if (this.$refs.aboutSection || this.$refs.worksSection || this.$refs.technologiesSection || this.$refs.testimonialsSection) {
+          await animateSections()
+      }
+      this.animationsComplete = true
     },
     setNumberOfWorks(n) {
       this.numberOfWorks = n
