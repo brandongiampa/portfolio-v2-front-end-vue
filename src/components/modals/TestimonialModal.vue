@@ -58,12 +58,14 @@
                     </form>
                 </div>
                 <div class="modal-footer justify-content-start">
-                    <button 
-                        :disabled="sendButtonShouldBeDisabled" 
-                        type="button" 
-                        class="btn btn-primary btn-lg rounded-3"
-                        @click="postTestimonial"
-                    >Send</button>
+                    <vue-recaptcha sitekey="6LdALMgjAAAAANsufwspkwQXyCZ-suW_YfWCuP8W">
+                        <button 
+                            :disabled="sendButtonShouldBeDisabled" 
+                            type="button" 
+                            class="btn btn-primary btn-lg rounded-3"
+                            @click="postTestimonial"
+                        >Send</button>
+                    </vue-recaptcha>
                 </div>
             </div>
         </div>
@@ -74,6 +76,7 @@
     const MINIMUM_TESTIMONIAL_LENGTH = 30
     let successfulApiCall
     import axios from "axios"
+    import { VueRecaptcha } from 'vue-recaptcha'
 
     export default {
         data() {
@@ -156,6 +159,9 @@
                 || !this.isValidUrl(this.authorCompanyUrl)
                 || this.isPostingTestimonial
             },
+        },
+        components: {
+            VueRecaptcha
         }
     }
 </script>

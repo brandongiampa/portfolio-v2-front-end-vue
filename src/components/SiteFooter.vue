@@ -33,7 +33,9 @@
                                 <label for="inputMessage">Message</label>
                                 <textarea v-model="message" class="form-control" id="inputMessage" rows="8"></textarea>
                             </div>
-                            <button :disabled="disableSend" @click="sendEmail" type="submit" class="btn btn-primary text-light mt-4 ml-1">Send</button>
+                            <vue-recaptcha sitekey="6LdALMgjAAAAANsufwspkwQXyCZ-suW_YfWCuP8W">
+                                <button :disabled="disableSend" @click="sendEmail" type="submit" class="btn btn-primary text-light mt-4 ml-1">Send</button>
+                            </vue-recaptcha>
                             <div v-if="isSendingEmail" class="text-muted sending-message"><i>Sending...</i></div>
                         </div>
                 </div>
@@ -61,6 +63,8 @@
 <script>
     let successfulApiCall
     import axios from "axios"
+    import { VueRecaptcha } from 'vue-recaptcha'
+
     export default {
         data() {
             return {
@@ -136,6 +140,9 @@
             disableSend: function() {
                 return this.name === "" || this.email === ""  || !this.isValidEmail(this.email) || this.message === ""
             }
+        },
+        components: {
+            VueRecaptcha
         }
     }
 </script>
