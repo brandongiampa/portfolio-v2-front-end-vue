@@ -68,7 +68,7 @@
                         url: "https://roofgenius.com"
                     },
                     {
-                        text: "So handsome!",
+                        text: "I hope I can work with him again!",
                         author: "Gluten Free Beer Brian",
                         company: "GFB Supply",
                         url: "https://gfbsupply.com"
