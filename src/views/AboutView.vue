@@ -21,14 +21,13 @@
         have done work for companies/clients using <strong>Elementor</strong> and <strong>Divi</strong>.
       </p>
       <p>
-        If you notice a time gap in my portfolio, it's because the software I develop at my current position is internal to Google. 
+        If you notice a time gap in my portfolio, it's because the software I develop at my current position is internal to the client. 
         Furthermore, working amongst the most talented software engineers on earth
         has inspired me to spend more free time on <strong>algorithms</strong> and <strong>data structures</strong>, which
         I have grown quite adept at doing, especialy given my advanced knowledge of Javascript.
       </p>
 
-      <h3>Current Position: Temping at Google</h3>
-      <p>
+      <h3>Current Position: Software Development Analyst</h3>
         At the time of writing this, I'm working a temporary position as <i>Software Development Analyst</i> with Telus International, 
         a vendor supporting a client company I cannot name. We assist software engineers and linguists with front end development of user interfaces for proprietary software used by data annotators to train AI.
         I worked this job as a temp starting in August of 2021, and have been <strong>team lead</strong> since April of 2022. The job vendorized in July of 2023.
