@@ -7,7 +7,7 @@
         My <strong>coding</strong> journey began in 2017, and my first formal client work in the industry began in 2019.
       </p>
       <p>
-        I am currently living in <strong>Tulsa</strong>, though my job is remote, but might be <strong>willing to relocate</strong> anywhere in the US for the right job.
+        I am currently living in <strong>Tulsa</strong> and my job is remote, but might be <strong>willing to relocate</strong> anywhere in the US for the right job.
       </p>
 
       <h2>Development Skills and Experience</h2>
@@ -27,7 +27,7 @@
         I have grown quite adept at doing, especialy given my advanced knowledge of Javascript.
       </p>
 
-      <h3>Current Position: Software Development Analyst</h3>
+      <h3>Current Position: Software Development Analyst</h3><p>
         At the time of writing this, I'm working a temporary position as <i>Software Development Analyst</i> with Telus International, 
         a vendor supporting a client company I cannot name. We assist software engineers and linguists with front end development of user interfaces for proprietary software used by data annotators to train AI.
         I worked this job as a temp starting in August of 2021, and have been <strong>team lead</strong> since April of 2022. The job vendorized in July of 2023.
