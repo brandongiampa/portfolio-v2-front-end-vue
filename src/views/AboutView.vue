@@ -7,10 +7,7 @@
         My <strong>coding</strong> journey began in 2017, and my first formal client work in the industry began in 2019.
       </p>
       <p>
-        I am currently living and working in <strong>Los Angeles</strong> area, though thanks to my job being flexible with work-from-home, 
-        I have been spending a lot of time in Michigan recently to tend to some family issues. 
-        That said, I would be <strong>willing to relocate</strong> anywhere in the US for the right job.
-        When my car lease is up in August of 2024, I might be willing to travel even further.
+        I am currently living in <strong>Tulsa</strong>, though my job is remote, but might be <strong>willing to relocate</strong> anywhere in the US for the right job.
       </p>
 
       <h2>Development Skills and Experience</h2>
@@ -32,9 +29,9 @@
 
       <h3>Current Position: Temping at Google</h3>
       <p>
-        At the time of writing this, I'm working a temporary position with Adecco as <i>Ads Quality Admin</i>, 
-        directly supporting a team of Google software engineers and linguists centralized in Venice Beach.
-        I have been here since August of 2021, and have been <strong>team lead</strong> since April of 2022.
+        At the time of writing this, I'm working a temporary position as <i>Software Development Analyst</i> with Telus International, 
+        a vendor supporting a client company I cannot name. We assist software engineers and linguists with front end development of user interfaces for proprietary software used by data annotators to train AI.
+        I worked this job as a temp starting in August of 2021, and have been <strong>team lead</strong> since April of 2022. The job vendorized in July of 2023.
       </p> 
       <p>
         My team spends most of our time developing and troubleshooting 
@@ -43,7 +40,7 @@
         Despite the strange title, it is more or less a <strong>junior developer</strong> position with some admin responsibilities.
       </p>
       <p>
-        As Team Lead, I wind up using a good amount of <b>GoogleSQL</b> as well. 
+        As Team Lead, I wind up using a good amount of <b>SQL</b> as well. 
         Additionally, when management makes a decision that the engineers aren't prepared for, 
         it's incumbent upon my department to find programmatic ways to validate and sanitize incoming data,
         which we do with Javascript.
@@ -69,7 +66,7 @@
       <p>
         Most people around me would tell you I am very good at what I do. 
         When I did the tech interview for my internship last year, the interviewer said I probably knew more than some of the developers.
-        I also did a mock interview with a Google software engineer recently and he said I "crushed" it.
+        I also did a mock interview with a software engineer at a major tech company a few years ago and he said I "crushed" it.
         The only thing missing from this equation is the opportunity.
       </p>
       <p>

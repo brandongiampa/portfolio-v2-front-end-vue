@@ -12,7 +12,7 @@
                             class="badge bg-primary px-2 py-1 text-light"
                             ref="badge"
                         >
-                            <strong>Orange County | Los Angeles</strong>
+                            <strong>Tulsa, OK</strong>
                         </span>
                         <underlined-h1 ref="h1" :title="title" />
                         <h2>
